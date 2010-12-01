@@ -28,12 +28,10 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<table border=0 cellspacing=0 cellpadding=0><tr cellspacing=0 cellpadding=0>
-			<td>
-			<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>
-			</td><td class="actions">
- 			<?php echo $this->Html->link('View', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
-			</td></tr></table>
+			<div class="c_actions">
+				<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 				<?php echo $this->Html->link('View', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
+			</div>
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -58,6 +56,8 @@
 		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Genes', true)), array('action' => 'index')); ?> </li>
 	</ul>
 </div>
+<table>
+<tr><td>
 <div class="related">
 	<h3><?php printf(__('Related %s', true), __('Refseqs', true));?></h3>
 	<?php if (!empty($gene['Refseq'])):?>
@@ -66,12 +66,6 @@
 		<th><?php __('Id'); ?></th>
 		<th><?php __('Seqacc'); ?></th>
 		<th><?php __('N Exons'); ?></th>
-		<th><?php __('Gene Id'); ?></th>
-		<th><?php __('Chr'); ?></th>
-		<th><?php __('G Start'); ?></th>
-		<th><?php __('G End'); ?></th>
-		<th><?php __('Strand'); ?></th>
-		<th><?php __('Sequence'); ?></th>
 		<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -86,12 +80,6 @@
 			<td><?php echo $refseq['id'];?></td>
 			<td><?php echo $refseq['seqacc'];?></td>
 			<td><?php echo $refseq['n_exons'];?></td>
-			<td><?php echo $refseq['gene_id'];?></td>
-			<td><?php echo $refseq['chr'];?></td>
-			<td><?php echo $refseq['g_start'];?></td>
-			<td><?php echo $refseq['g_end'];?></td>
-			<td><?php echo $refseq['strand'];?></td>
-			<td><?php echo $refseq['sequence'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'refseqs', 'action' => 'view', $refseq['id'])); ?>
 			</td>
@@ -99,8 +87,8 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
 </div>
+</td><td>
 <div class="related">
 	<h3><?php printf(__('Related %s', true), __('Retrogenes', true));?></h3>
 	<?php if (!empty($retrogenes)):?>
@@ -139,3 +127,4 @@
 	</table>
 	<?php endif; ?>
 </div>
+</td></tr></table>
