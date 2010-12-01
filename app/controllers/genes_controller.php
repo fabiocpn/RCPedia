@@ -9,6 +9,17 @@ class GenesController extends AppController {
 		$this->set('genes', $this->paginate());
 	}
 
+	function searchbyname( ) {
+		if(!isset($this->data) && $this->params['url']['url'] == "genes/searchbyname" ){
+			$this->Session->delete('gene_name');
+			echo "";
+		} 
+		if(isset($this->data['Genes']['gene_name_q'])) {
+			$this->Session->write('gene_name',$this->data['Genes']['gene_name_q']);
+		}
+		$this->set('genes', $this->paginate("Gene", Array ( 'Gene.gene_name LIKE' => "%".$this->Session->read('gene_name')."%" ) ) );
+	}
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'gene'));
