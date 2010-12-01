@@ -14,7 +14,7 @@ class RetrogenesController extends AppController {
 	}
 
 	function searchbycoord() {
-		if(!isset($this->data) && $this->params['url']['url'] == "retrogenes/searchbycoord" ){
+		if(!isset($this->data) && ( $this->params['url']['url'] == "retrogenes/searchbycoord" || $this->params['url']['url'] == "retrogenes/searchbycoord/" ) ){
 			$this->Session->delete('coord');
 		} 
 		if(isset($this->data['Retrogenes']['coord_q'])) {
@@ -37,7 +37,6 @@ class RetrogenesController extends AppController {
 			}
 
 			$this->Session->write('coord',$t_coord);
-	
 		}
 		$t_coord = $this->Session->read('coord');
 			if ( isset($t_coord['start']) && isset($t_coord['end']) ) { 
