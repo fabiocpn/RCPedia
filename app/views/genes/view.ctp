@@ -1,5 +1,6 @@
 <div class="genes view">
 <h2><?php  __('Gene');?></h2>
+	<table border=0><tr><td width=60%>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -49,6 +50,9 @@
 			&nbsp;
 		</dd>
 	</dl>
+	</td><td>
+		<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
+	</td></tr></table>
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
