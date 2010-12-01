@@ -10,13 +10,19 @@ class GenesController extends AppController {
 	}
 
 	function searchbyname( ) {
-		if(!isset($this->data) && $this->params['url']['url'] == "genes/searchbyname" ){
+		if(!isset($this->data) && ( $this->params['url']['url'] == "genes/searchbyname" || $this->params['url']['url'] == "genes/searchbyname/" ) ){
 			$this->Session->delete('gene_name');
 		} 
 		if(isset($this->data['Genes']['gene_name_q'])) {
 			$this->Session->write('gene_name',$this->data['Genes']['gene_name_q']);
 		}
-		$this->set('genes', $this->paginate("Gene", Array ( 'Gene.gene_name LIKE' => "%".$this->Session->read('gene_name')."%" ) ) );
+
+		if ( $this->Session->read('gene_name') ) {
+			$this->set('genes', $this->paginate("Gene", Array ( 'Gene.gene_name LIKE' => "%".$this->Session->read('gene_name')."%" ) ) );
+		} else {
+			$this->set('genes', $this->paginate("Gene", Array ( 'Gene.specie_id' => 0 ) ) );
+
+		}	
 	}
 
 	function view($id = null) {
