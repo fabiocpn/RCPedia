@@ -58,6 +58,7 @@ class RetrogenesController extends AppController {
 		#
 		###############
 		$string = $this->Session->read('search_string');
+
 		if ( isset($this->data['Retrogenes']['specie_id']) ) {
 			$specie_id = $this->data['Retrogenes']['specie_id'];
 		} else {
@@ -121,6 +122,9 @@ class RetrogenesController extends AppController {
 					}
 				}
 			}
+		}
+		else {
+			$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.id' => 0)));
 		}
 	}
 
