@@ -77,8 +77,9 @@ class RetrogenesController extends AppController {
 		#
 		###############
 		if ( isset($string) ) {
-			if ( $seach_coord == 0 ) {
+			if ( !isset($seach_coord) || $seach_coord == 0 ) {
 				$this->paginate = array ( 'order' => 'Gene.gene_name' );
+				$this->paginate = array ( 'limit' => 50 );
 				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string)));
 				if ( count($this->viewVars['retrogenes']) == 0 ) {
 					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Gene.Ensembl_id' => $string)));
@@ -107,13 +108,13 @@ class RetrogenesController extends AppController {
 		###############
 			else {
 				$t_coord = $this->Session->read('coord');
+				$this->paginate = array ( 'limit' => 20 );
+				$this->paginate = array ( 'order' => 'Retrogene.g_start' );
 				if ( isset($t_coord['start']) && isset($t_coord['end']) ) { 
-					$this->paginate = array ( 'order' => 'Retrogene.g_start' );
 					$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'], 'Retrogene.g_start >=' => $t_coord['start'], 'Retrogene.g_end <=' => $t_coord['end'])));
 				}
 				else {
 					if ( !isset($t_coord['start']) && !isset($t_coord['end']) ) {
-						$this->paginate = array ( 'order' => 'Retrogene.g_start' );
 						$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'])));
 					}	
 					else {
