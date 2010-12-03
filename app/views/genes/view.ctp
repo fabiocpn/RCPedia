@@ -1,6 +1,5 @@
-<div class="genes view">
 
-	<h3><?php printf(__('Related %s', true), __('Retrogenes', true));?></h3>
+	<h2><?php printf(__('Related %s', true), __('Retrogenes', true));?></h2>
 	<?php if (!empty($retrogenes)):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -36,17 +35,10 @@
 	<?php endforeach; ?>
 	</table>
 	<?php endif; ?>
-</div>
-
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Genes', true)), array('action' => 'index')); ?> </li>
-	</ul>
-</div>
+<br><br>
 
 <div>
-<h2><?php  __('Gene');?></h2>
+<h3><?php  __('Gene');?></h3>
 	<table border=0><tr><td width=60%>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
