@@ -1,4 +1,51 @@
 <div class="genes view">
+
+	<h3><?php printf(__('Related %s', true), __('Retrogenes', true));?></h3>
+	<?php if (!empty($retrogenes)):?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php __('Id'); ?></th>
+		<th><?php __('Chr'); ?></th>
+		<th><?php __('Start'); ?></th>
+		<th><?php __('End'); ?></th>
+		<th><?php __('Strand'); ?></th>
+		<th><?php __('Method'); ?></th>
+		<th class="actions"><?php __('Actions');?></th>
+	<tr>
+	<?php
+		$i = 0;
+		foreach ($retrogenes as $retrogene):
+			$class = null;
+			if ($i++ % 2 == 0) {
+				$class = ' class="altrow"';
+			}
+		?>
+		<tr<?php echo $class;?>>
+			<td><?php echo $retrogene['Retrogenes']['id'];?></td>
+			<td><?php echo $retrogene['Retrogenes']['chr'];?></td>
+			<td><?php echo $retrogene['Retrogenes']['g_start'];?></td>
+			<td><?php echo $retrogene['Retrogenes']['g_end'];?></td>
+			<td><?php echo $retrogene['Retrogenes']['strand'];?></td>
+			<td><?php echo $retrogene['Method']['name'];?></td>
+			<td class="actions">
+ 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
+ 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']); ?>
+ 			</td>
+
+		</tr>
+	<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
+</div>
+
+<div class="actions">
+	<h3><?php __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Genes', true)), array('action' => 'index')); ?> </li>
+	</ul>
+</div>
+
+<div>
 <h2><?php  __('Gene');?></h2>
 	<table border=0><tr><td width=60%>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -54,14 +101,7 @@
 		<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
 	</td></tr></table>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Genes', true)), array('action' => 'index')); ?> </li>
-	</ul>
-</div>
-<table>
-<tr><td>
+
 <div class="related">
 	<h3><?php printf(__('Related %s', true), __('Refseqs', true));?></h3>
 	<?php if (!empty($gene['Refseq'])):?>
@@ -92,43 +132,3 @@
 	</table>
 <?php endif; ?>
 </div>
-</td><td>
-<div class="related">
-	<h3><?php printf(__('Related %s', true), __('Retrogenes', true));?></h3>
-	<?php if (!empty($retrogenes)):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php __('Id'); ?></th>
-		<th><?php __('Chr'); ?></th>
-		<th><?php __('Start'); ?></th>
-		<th><?php __('End'); ?></th>
-		<th><?php __('Strand'); ?></th>
-		<th><?php __('Identity'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
-	<tr>
-	<?php
-		$i = 0;
-		foreach ($retrogenes as $retrogene):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $retrogene['Retrogenes']['id'];?></td>
-			<td><?php echo $retrogene['Retrogenes']['chr'];?></td>
-			<td><?php echo $retrogene['Retrogenes']['g_start'];?></td>
-			<td><?php echo $retrogene['Retrogenes']['g_end'];?></td>
-			<td><?php echo $retrogene['Retrogenes']['strand'];?></td>
-			<td><?php echo $retrogene['Retrogenes']['ident'];?></td>
-			<td class="actions">
- 				<?php echo $this->Html->link('View', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']); ?>
- 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
- 			</td>
-
-		</tr>
-	<?php endforeach; ?>
-	</table>
-	<?php endif; ?>
-</div>
-</td></tr></table>
