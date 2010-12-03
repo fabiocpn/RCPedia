@@ -10,9 +10,9 @@
 <h2><?php __('Genes');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $this->Paginator->sort('gene_name');?></th>
-	<th><?php echo $this->Paginator->sort('gene_oficial_name');?></th>
-	<th><?php echo $this->Paginator->sort('chr');?></th>
+	<th><?php echo $this->Paginator->sort('Gene_name');?></th>
+	<th><?php echo $this->Paginator->sort('Full_name');?></th>
+	<th><?php echo $this->Paginator->sort('Chr');?></th>
 	<th><?php echo $this->Paginator->sort('g_start');?></th>
 	<th><?php echo $this->Paginator->sort('g_end');?></th>
 	<th><?php echo $this->Paginator->sort('strand');?></th>
@@ -29,7 +29,7 @@ if ($i++ % 2 == 0) {
 ?>
 <tr<?php echo $class;?>>
 <td><?php echo $gene['Gene']['gene_name']; ?>&nbsp;</td>
-<td><?php echo $gene['Gene']['gene_oficial_name']; ?>&nbsp;</td>
+<td><?php echo $gene['Gene']['full_name']; ?>&nbsp;</td>
 <td><?php echo $gene['Gene']['chr']; ?>&nbsp;</td>
 <td><?php echo $gene['Gene']['g_start']; ?>&nbsp;</td>
 <td><?php echo $gene['Gene']['g_end']; ?>&nbsp;</td>

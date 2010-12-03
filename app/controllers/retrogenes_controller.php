@@ -82,21 +82,18 @@ class RetrogenesController extends AppController {
 				$this->paginate = array ( 'limit' => 50 );
 				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string)));
 				if ( count($this->viewVars['retrogenes']) == 0 ) {
-					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Gene.Ensembl_id' => $string)));
+					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
 					if ( count($this->viewVars['retrogenes']) == 0 ) {
-						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Gene.ncbi_id' => $string)));
+						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, array ( 'OR' => array('Retrogene.t_id LIKE' => "%".$string."%",'Gene.gene_name LIKE' => "%".$string."%")))));
 						if ( count($this->viewVars['retrogenes']) == 0 ) {
-							$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, array ( 'OR' => array('Retrogene.t_id LIKE' => "%".$string."%",'Gene.gene_name LIKE' => "%".$string."%")))));
+							$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.synonims LIKE' => "%".$string."%")));
 							if ( count($this->viewVars['retrogenes']) == 0 ) {
-								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.synonims LIKE' => "%".$string."%")));
+								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.full_name LIKE' => "%".$string."%")));
 								if ( count($this->viewVars['retrogenes']) == 0 ) {
-									$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
-									if ( count($this->viewVars['retrogenes']) == 0 ) {
-										$this->Session->setFlash(sprintf(__('No Retrogens were found using the term: %s', true), $string));
-										$this->redirect(array('action' => 'search'));
-									}
-								}	
-							}
+									$this->Session->setFlash(sprintf(__('No Retrogens were found using the term: %s', true), $string));
+									$this->redirect(array('action' => 'search'));
+								}
+							}	
 						}
 					}	
 				}
