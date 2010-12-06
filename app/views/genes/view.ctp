@@ -53,7 +53,7 @@
 </div>
 
 <div>
-	<table border=0><tr><td width=60%>
+	<table border=0><tr><td width=800>
 	<dl>
 		<h3><?php  __('Parental Gene');?></h3>
 	</dl>
@@ -87,7 +87,7 @@
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<div class="c_actions">
 				<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 				<?php echo $this->Html->link('View', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
+ 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
 			</div>
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
