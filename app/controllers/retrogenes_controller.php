@@ -124,7 +124,17 @@ class RetrogenesController extends AppController {
 			}
 		}
 		else {
-			$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.id' => 0)));
+			$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.id' => 0)));
+		}
+	}
+
+	function searchbygenename($string = null) {
+		if ( isset($string) ) {
+		#	$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string)));
+			$this->set('retrogenes', $this->paginate('Retrogene', Array('Gene.gene_name' => $string)));
+		}
+		else {
+			$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.id' => 0)));
 		}
 	}
 

@@ -1,5 +1,12 @@
 
-	<h2><?php printf(__('Related %s', true), __('Retrogenes', true));?></h2>
+<div class="retrogenes index">
+<?php
+	echo $form->create("Retrogenes",array('type' => 'post','action' => 'search'));
+	echo $form->input("search_string", array('label' => 'Search for Retrogenes','alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'));
+	echo $form->input("specie_id", array('options' => array(1=>'Human',2=>'Chimp',3=>'Rhesus',4=>'Mouse',5=>'Rat',6=>'Dog',7=>'Zebrafish',8=>'Drosophila')));
+	echo $form->end("Search");
+?>
+	<h2><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></h2>
 	<?php if (!empty($retrogenes)):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
@@ -36,10 +43,20 @@
 	</table>
 	<?php endif; ?>
 <br><br>
+</div>
+
+<div class="actions">
+	<h3><?php __('Actions'); ?></h3>
+</div>
 
 <div>
-<h3><?php  __('Gene');?></h3>
+</div>
+
+<div>
 	<table border=0><tr><td width=60%>
+	<dl>
+		<h3><?php  __('Parental Gene');?></h3>
+	</dl>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
