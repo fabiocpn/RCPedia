@@ -19,8 +19,11 @@ class RetrogenesController extends AppController {
 		# Clean up the session variable if its the first page without search terms
 		#
 		###############
-		if(!isset($this->data) && ( $this->params['url']['url'] == "retrogenes/search" || $this->params['url']['url'] == "retrogenes/search/" ) ){
+		#$this->params->named->page
+		if( !isset($this->data) && ( $this->params['url']['url'] == "retrogenes/search" || $this->params['url']['url'] == "retrogenes/search/" )  ){
 			$this->Session->delete('search_string');
+			$this->Session->delete('coord');
+			$this->Session->write('is_coord',0);
 		}
 
 		###############
@@ -31,7 +34,6 @@ class RetrogenesController extends AppController {
 		###############
 		if(isset($this->data['Retrogenes']['search_string'])) {
 			if ( preg_match("/^chr/",$this->data['Retrogenes']['search_string']) || preg_match("/^CHR/",$this->data['Retrogenes']['search_string']) ) {
-				$seach_coord = 1;
 				$array = preg_split("/:|-/", $this->data['Retrogenes']['search_string']);
 
 				if ( isset($array[0]) ) { 
@@ -45,9 +47,10 @@ class RetrogenesController extends AppController {
 				}
 
 				$this->Session->write('coord',$t_coord);
+				$this->Session->write('is_coord',1);
 			}
 			else {
-				$seach_coord = 0;
+				$this->Session->write('is_coord',0);
 			}
 			$this->Session->write('search_string',$this->data['Retrogenes']['search_string']);
 		}
@@ -69,15 +72,14 @@ class RetrogenesController extends AppController {
 		#
 		# Seach for the string on this order:
 		#   - RetrogeneID 					(exact match)
-		#	- EnsemblID	  					(exact match)	
-		#	- NCBIID      					(exact match)
-		#	- Retrogene_id || Gene Name 	(match)	
-		#	- Aliases						(match)
+		#	- EnsemblID	|| UCSC_ID			(exact match)	
+		#	- Gene_name						(exact match)	
+		#	- Gene Name || Aliases		 	(match)	
 		#	- FullName						(match)
 		#
 		###############
 		if ( isset($string) ) {
-			if ( !isset($seach_coord) || $seach_coord == 0 ) {
+			if ( ! $this->Session->read('is_coord') ) {
 				$this->paginate = array ( 'order' => 'Gene.gene_name' );
 				$this->paginate = array ( 'limit' => 50 );
 				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string)));
@@ -118,7 +120,7 @@ class RetrogenesController extends AppController {
 					}	
 					else {
 						$this->Session->setFlash("Invalid Search");
-						$this->redirect(array('action' => 'searchbycoord'));
+						$this->redirect(array('action' => 'search'));
 					}
 				}
 			}
