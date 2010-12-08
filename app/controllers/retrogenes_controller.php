@@ -194,8 +194,25 @@ class RetrogenesController extends AppController {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'retrogene'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('retrogene', $this->Retrogene->read(null, $id));
-	}
 
+		$this->set('retrogene', $this->Retrogene->read(null, $id));
+
+		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".fa", 'w'); 
+
+		fwrite($fp,">retrogene\n".$this->Retrogene->data['Retrogene']['sequence']."\n");
+		fwrite($fp,">parental_gene\n".$this->Retrogene->data['Refseq']['sequence']."\n");
+		fclose($fp);
+
+		system("/home/projects/tools/bin/clustalw2 -INFILE=/tmp/retroDB2/".$this->Session->id().".fa -OUTFILE=/tmp/retroDB2/".$this->Session->id().".aln > /dev/null");
+		
+		$output = "<pre>";
+		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".aln","r");
+		while (!feof($fp)) {
+			$output .= fgets($fp);
+		}
+		fclose($fp);
+		$output .= "</pre>";
+		$this->set('alignment', $output);
+	}
 }
 ?>
