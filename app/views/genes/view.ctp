@@ -27,7 +27,7 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $retrogene['Retrogenes']['id'];?></td>
+			<td><?php echo $retrogene['Retrogenes']['t_id'];?></td>
 			<td><?php echo $retrogene['Retrogenes']['chr'];?></td>
 			<td><?php echo $retrogene['Retrogenes']['g_start'];?></td>
 			<td><?php echo $retrogene['Retrogenes']['g_end'];?></td>
@@ -141,3 +141,7 @@
 	</table>
 <?php endif; ?>
 </div>
+<h3>Alignment</h3>
+				<font size=-2>
+				<?php echo $alignment?>
+				</font>		
