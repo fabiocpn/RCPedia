@@ -87,6 +87,13 @@
 	</dl>
 </div>
 <br>
+Teste
+<br>
+>Retrogene<br>
+<?php echo $retrogene['Retrogene']['sequence']; ?><br>
+>Refseq<br>
+<?php echo $retrogene['Retrogene']['equi_refseq']; ?><br>
+
 <h3>Alignment</h3>
 				<font size=-2>
 				<?php echo $alignment?>
