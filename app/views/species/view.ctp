@@ -21,16 +21,13 @@
 			<?php echo $species['Species']['genomeBuild']; ?>
 			&nbsp;
 		</dd>
-	<br><br>
-	<?php echo $this->Html->image("http://chart.apis.google.com/chart?chxr=0,0,22500&chxt=y&chbh=a&chs=300x225&cht=bvg&chco=A2C180,3D7930&chds=0,22500,0,22500&chd=t:".$genes."|".$retro."&chdl=Gene|Retrogene&chma=|0,5&chtt=Retrogene+Proportion"); ?>&nbsp;
-	<?php echo $this->Html->image("http://chart.apis.google.com/chart?chs=350x225&cht=pc&chd=s:DHm&chl=Exonic|Intronic|Intergenic&chtt=Retrogene+Genomic+Regions&chts=676767,12.5"); ?>
 	<br><br><br>
-	<dd>
+	<?php echo $this->Html->image("http://chart.apis.google.com/chart?chxr=0,0,22500&chxt=y&chbh=a&chs=300x225&cht=bvg&chco=A2C180,3D7930&chds=0,22500,0,22500&chd=t:".$genes."|".$retro."&chdl=Gene|Retrogene&chma=|0,5&chtt=Retrogene+Proportion"); ?>&nbsp;
+	<?php echo $this->Html->image($char_gregion); ?>&nbsp;
+	<br><br><br>
 	<center>
 	<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$species['Species']['abreviation'].".png",Array("width" => 450,"height" => 450)); ?>
 	</center>
-	</dd>
-	</dl>
 	
 </div>
 <div class="actions">
