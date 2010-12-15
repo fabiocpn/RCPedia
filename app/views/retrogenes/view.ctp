@@ -1,4 +1,4 @@
-<div>
+<div class="view">
   <h2><?php  __('Retrogene');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
@@ -78,7 +78,7 @@
 		</dt>
 	</dl>
 </div>
-<div>
+<div class="view">
 <br>
 Teste
 <br>

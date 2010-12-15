@@ -1,4 +1,4 @@
-<div>
+<div class="view">
 	<h2><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></h2>
 	<?php if (!empty($retrogenes)):?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -38,7 +38,7 @@
 <br><br>
 </div>
 
-<div>
+<div class="view">
 	<table border=0><tr><td width=800>
 	<dl>
 		<h3><?php  __('Parental Gene');?></h3>

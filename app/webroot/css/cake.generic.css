@@ -188,10 +188,9 @@ ul, li {
 div.form,
 div.index,
 div.view {
-	float:right;
-	width:76%;
-	border-left:1px solid #666;
-	padding:10px 2%;
+	float: left;
+	width:80%;
+	padding:5px 1%;
 }
 div.actions {
 	float:left;
@@ -204,8 +203,9 @@ div.actions h3 {
 }
 
 div.menu {
-	float:right;
+	float: right;
 	width:16%
+	padding:10px 1.5%;
 }
 
 
