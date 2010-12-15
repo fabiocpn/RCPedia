@@ -1,5 +1,4 @@
-
-<div class="retrogenes index">
+<div>
 	<h2><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></h2>
 	<?php if (!empty($retrogenes)):?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -37,13 +36,6 @@
 	</table>
 	<?php endif; ?>
 <br><br>
-</div>
-
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-</div>
-
-<div>
 </div>
 
 <div>

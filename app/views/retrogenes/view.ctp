@@ -1,5 +1,5 @@
-<div class="retrogenes view">
-<h2><?php  __('Retrogene');?></h2>
+<div>
+  <h2><?php  __('Retrogene');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -49,14 +49,6 @@
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Retrogenes', true)), array('action' => 'index')); ?> </li>
-	</ul>
-</div>
-<div class="related">
 	<h3>Parental Gene</h3>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt <?php if ($i % 2 == 0) echo $class;?>>Gene Name</dt>
@@ -86,6 +78,7 @@
 		</dt>
 	</dl>
 </div>
+<div>
 <br>
 Teste
 <br>
@@ -100,3 +93,4 @@ Teste
 				<font size=-2>
 				<?php echo $alignment?>
 				</font>		
+</div>
