@@ -107,6 +107,89 @@ ul, li {
 	text-align: right;
 }
 
+/** seach layout **/
+#search{
+	padding: 10px 20px;
+	background: #e5e5e5
+	background: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.01, rgb(202,202,202)),
+	    color-stop(0.09, rgb(229,229,229))
+	);
+	background: -moz-linear-gradient(
+	    center bottom,
+	    rgb(202,202,202) 1%,
+	    rgb(229,229,229) 9%
+	);
+}
+
+#search h1 {
+	line-height:20px;
+	/**background: #e5e5e5 url('../img/cake.icon.png') no-repeat left;**/
+	background: #e5e5e5;
+	color: #003d4c;
+	padding: 0px 30px;
+}
+
+.search_b { width: 62em; margin:0; left: 20em; position: absolute; top: .9em; 
+
+
+}
+.search_top label {font-size:100%; margin-right: .2em;}
+.search_bottom button { font-family: "Helvetica Neue", GillSans, helvetica, "lucida sans", arial, sans-serif; }
+.search_extras .inline_list li a, rss_menu{ font-size: 1.2em; }
+
+.search_extras li { margin-right: 1.2em; }
+
+.search_top, .search_bottom { background-color: #c0c0c0; border: 2px solid white; padding: 6px; padding-left: 8px; }
+.search_top { width: 25em; border-bottom: 0; border-radius: 6px 6px 0 0; -moz-border-radius: 6px 6px 0 0; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; z-index: 10; padding-bottom: 0px; position: relative; top: 0px; }
+.search_top select { width: 13em; font-size: 100%; padding:0%}
+.search_bottom { width: 60em; border-radius: 0 6px 6px 6px; -moz-border-radius: 0 6px 6px 6px; -webkit-border-top-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -webkit-border-bottom-right-radius: 6px; position: relative; top: -2px; z-index: 5; *height: 2.5em;}
+.search_bottom input { width: 34em; }
+.search_extras { width: 40em; position: relative; top: -6.2em; left: 28em; *top: -6.7em; *left: 27.5em; *z-index: 4;  }
+
+.search_top label.search_nodropdown{display: block; height: 22px;}
+.search_bottom input.search_short { width: 29.5em; }
+
+.search_b .search_top { z-index: 3\0; *z-index:3; }
+.search_b .search_bottom { z-index: 2\0; *z-index:2; }
+
+.search_extras .inline_list li { margin-right:1.2em;}
+.header .search_extras .inline_list li a {font-size:1.2em;}
+.search_extras .hidden {display: none;}
+.search_extras .visible {display: inline; }
+
+.search_b { z-index: 0\0; *z-index: 0; height: 7.1em\0; *height: 7.1em; _width: 60.2em; }
+.search_b .search_top { z-index: 3\0; *z-index:3; }
+.search_b .search_bottom { z-index: 2\0; *z-index:2; }
+.search_b .tr, .search_b .tl, .search_b .br, .search_b .bl, .search_b .tr2 { display: block\0; *display:block; font-size: 0\0; *font-size:0; height: 6px\0; *height:6px; position: relative\0; *position:relative; background: url(/portal/portal3rc.fcgi/637856/img/26974) no-repeat\0; *background:url(/portal/portal3rc.fcgi/637856/img/26974) no-repeat; z-index: 5\0; *z-index:5; }
+.search_b .tr, .search_b .br, .search_b .tr2 { position: absolute\0; *position: absolute;}
+.search_b .tr, .search_b .tr2 {background-position: 100% 0\0; *background-position: 100% 0;}
+.search_b .tr {width: 43.2%\0; *width: 43.2%; _width: 41.5%; top: 0px\0; *top:0px;}
+.search_b .tl { background-position: 0 -12px\0; *background-position: 0 -12px;}
+.search_b .br { background-position: 100% -6px\0; *background-position: 100% -6px; bottom: 3px\0; *bottom: 2px; _bottom: 20px;}
+.search_b .bl { background-position: 0 -18px\0; *background-position: 0 -18px; left: 2px\0; *left:2px;}
+.search_b .tr2 { top: 28px\0; *top: 28px;}
+.search_b .br, .search_b .tr2 { width: 100%\0; *width:100%; right: 2px\0; *right:2px;}
+
+.search_bottom button{ border: 0 none; cursor: pointer; overflow: visible; width: auto; background-color: #ddd; padding: .2em .4em; *padding: .2em .6em; _padding: .2em .4em; margin: 0 .2em; *margin: 0 .3em; *height: 1.8em; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.search_bottom button:active { background-color: #fcfcfc; }
+.search_bottom button.button_search { background-color: #369; font-weight: bold; color:#fff; *margin-left:.5em;}
+.search_bottom button.button_search:active { background-color: #4c96df; }
+.search_bottom button.button_preview { background-color: #A64D48; font-weight: bold; color:#fff; }
+.search_bottom button.button_preview:active { background-color: #F27069; }
+.search_b input, textarea, select { 
+	clear: both;
+	font-size: 100%;
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+	padding: 0%;
+	width:50%;
+ }
+.search_b form div {clear: both; margin-bottom: 0; padding: .5em; vertical-align: text-top; }
+.search_b label {display: block; font-size: 100%; margin-bottom: 0px; }
+
 /** containers **/
 div.form,
 div.index,

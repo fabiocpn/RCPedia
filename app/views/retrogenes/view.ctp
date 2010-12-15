@@ -92,7 +92,9 @@ Teste
 >Retrogene<br>
 <?php echo $retrogene['Retrogene']['sequence']; ?><br>
 >Refseq<br>
-<?php echo $retrogene['Retrogene']['equi_refseq']; ?><br>
+<?php echo $retrogene['Refseq']['seq']; ?><br>
+>RefSeq_CDS<br>
+<?php echo $retrogene['Refseq']['cds_seq']; ?><br>
 
 <h3>Alignment</h3>
 				<font size=-2>
