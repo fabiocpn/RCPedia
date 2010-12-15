@@ -110,7 +110,7 @@ ul, li {
 /** seach layout **/
 #search{
 	padding: 10px 20px;
-	background: #e5e5e5
+	background: #e5e5e5 url('../img/logo.png') no-repeat left;
 /**	background: -webkit-gradient(
 	    linear,
 	    left bottom,
@@ -136,11 +136,11 @@ ul, li {
 
 .search_top label {font-size:100%; margin-right: .2em;}
 .search_top, .search_bottom { background-color: #c0c0c0; border: 2px solid white; padding: 6px; padding-left: 8px; }
-.search_top { left: 15em; width: 15em; border-bottom: 0; border-radius: 6px 6px 0 0; -moz-border-radius: 6px 6px 0 0; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; z-index: 10; padding-bottom: 0px; position: relative; top: 0px; }
+.search_top { left: 7em; width: 15em; border-bottom: 0; border-radius: 6px 6px 0 0; -moz-border-radius: 6px 6px 0 0; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; z-index: 10; padding-bottom: 0px; position: relative; top: 0px; }
 .search_top select { width: 7em; font-size: 100%; padding:0%}
 .search_top label.search_nodropdown{display: block; height: 22px;}
 
-.search_bottom { left: 15em; width: 40em; border-radius: 0 6px 6px 6px; -moz-border-radius: 0 6px 6px 6px; -webkit-border-top-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -webkit-border-bottom-right-radius: 6px; position: relative; top: -2px; z-index: 5; *height: 2.5em;}
+.search_bottom { left: 7em; width: 40em; border-radius: 0 6px 6px 6px; -moz-border-radius: 0 6px 6px 6px; -webkit-border-top-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -webkit-border-bottom-right-radius: 6px; position: relative; top: -2px; z-index: 5; *height: 2.5em;}
 .search_bottom button { font-family: "Helvetica Neue", GillSans, helvetica, "lucida sans", arial, sans-serif; }
 .search_bottom input { width: 34em; }
 .search_bottom input.search_short { width: 29.5em; }
@@ -201,6 +201,11 @@ div.actions {
 div.actions h3 {
 	padding-top:0;
 	color:#777;
+}
+
+div.menu {
+	float:right;
+	width:16%
 }
 
 

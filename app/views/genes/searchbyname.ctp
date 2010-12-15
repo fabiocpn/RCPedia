@@ -1,12 +1,5 @@
 <div class="genes index">
 
-<?php
-	echo $form->create("Genes",array('type' => 'post','action' => 'searchbyname'));
-	echo $form->input("gene_name_q", array('label' => 'Search for Gene'));
-	echo $form->end("Search");
-?>
-
-
 <h2><?php __('Genes');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
