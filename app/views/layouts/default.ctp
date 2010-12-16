@@ -52,12 +52,10 @@
 		</div>
 
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $content_for_layout; ?>
-
 		</div>
+
 		<!--
 		<div id="footer">
 			<?php echo $this->Html->link(

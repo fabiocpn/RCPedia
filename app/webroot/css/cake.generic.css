@@ -202,12 +202,30 @@ div.actions h3 {
 	color:#777;
 }
 
+/** Menu **/
 div.menu {
 	float: right;
 	width:16%
 	padding:10px 1.5%;
+	font-size: 75%;
+}
+div.menu h1 {
+	font-size: 110%;
+	color: #9b5c3b;
+	padding: 0px;
+	font-weight: bold;
 }
 
+div.menu table tr td {
+	background: #fff;
+	padding: 0px;
+	width: 100%;
+	text-align: left;
+	vertical-align: top;
+	border-top:2px solid #006c87;
+	border-bottom:0px solid #555;
+	width: 100px;
+}
 
 /** Tables **/
 table {
