@@ -107,6 +107,23 @@ ul, li {
 	text-align: right;
 }
 
+/** Menu **/
+div.menu {
+	float: right;
+	width:16%
+	padding:0px;
+	font-size: 75%;
+}
+
+/** PORTLETS **/
+.column { width: 260px; float: left; padding-bottom: 0.1px; padding-top: 20px }
+.portlet { margin: 0 .1em .1em 0; }
+.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 95%; font-color: #9b5c3b;}
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; font-size: 90%;}
+.ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+
 /** seach layout **/
 #search{
 	padding: 10px 20px;
@@ -189,7 +206,7 @@ div.form,
 div.index,
 div.view {
 	float: left;
-	width:80%;
+	width:50%;
 	padding:5px 1%;
 }
 div.actions {
@@ -202,30 +219,6 @@ div.actions h3 {
 	color:#777;
 }
 
-/** Menu **/
-div.menu {
-	float: right;
-	width:16%
-	padding:10px 1.5%;
-	font-size: 75%;
-}
-div.menu h1 {
-	font-size: 110%;
-	color: #9b5c3b;
-	padding: 0px;
-	font-weight: bold;
-}
-
-div.menu table tr td {
-	background: #fff;
-	padding: 0px;
-	width: 100%;
-	text-align: left;
-	vertical-align: top;
-	border-top:2px solid #006c87;
-	border-bottom:0px solid #555;
-	width: 100px;
-}
 
 /** Tables **/
 table {
@@ -654,11 +647,4 @@ div.code-coverage-results span.result-good {
 	color: #0a0;
 }
 
-/** PORTLETS **/
-	.column { width: 170px; float: left; padding-bottom: 100px; }
-	.portlet { margin: 0 1em 1em 0; }
-	.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
-	.portlet-header .ui-icon { float: right; }
-	.portlet-content { padding: 0.4em; }
-	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
-	.ui-sortable-placeholder * { visibility: hidden; }
+
