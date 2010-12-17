@@ -95,11 +95,12 @@ ul, li {
 	text-decoration: underline;
 }
 #content{
-	background: #fff;
-	clear: both;
+	background: white; 
 	color: #333;
-	padding: 10px 20px 40px 20px;
-	overflow: auto;
+	border: 0px solid white;
+	min-width: 1023px;
+	overflow: hidden;
+	width: 100%;
 }
 #footer {
 	clear: both;
@@ -107,26 +108,11 @@ ul, li {
 	text-align: right;
 }
 
-/** Menu **/
-div.menu {
-	float: right;
-	width:16%
-	padding:0px;
-	font-size: 75%;
-}
-
-/** PORTLETS **/
-.column { width: 260px; float: left; padding-bottom: 0.1px; padding-top: 20px }
-.portlet { margin: 0 .1em .1em 0; }
-.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 95%; font-color: #9b5c3b;}
-.portlet-header .ui-icon { float: right; }
-.portlet-content { padding: 0.4em; font-size: 90%;}
-.ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
-.ui-sortable-placeholder * { visibility: hidden; }
 
 /** seach layout **/
 #search{
 	padding: 10px 20px;
+	min-width:1023px;
 	background: #e5e5e5 url('../img/logo.png') no-repeat left;
 /**	background: -webkit-gradient(
 	    linear,
@@ -177,7 +163,7 @@ div.menu {
 .search_extras .visible {display: inline; }
 
 
-.header .search_extras .inline_list li a {font-size:1.2em;}
+.search_extras .inline_list li a {font-size:1.2em;}
 
 .search_b { width: 62em; margin:0; left: 20em; top: 4em; }
 .search_b input, textarea {	clear: both; font-size: 80%; font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif; padding: 0%; width:50%; }
@@ -205,9 +191,15 @@ div.menu {
 div.form,
 div.index,
 div.view {
+	position: relative;
+	padding: 10px 20px 10px 20px;
+	border: 0px solid red;
+	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+	background: white;
+	margin-right: 200px;
+	min-width: 824px;
 	float: left;
-	width:50%;
-	padding:5px 1%;
+	width:auto;
 }
 div.actions {
 	float:left;
@@ -218,7 +210,38 @@ div.actions h3 {
 	padding-top:0;
 	color:#777;
 }
+/** Menu **/
 
+div.menu {
+	position: relative;
+	float: left;
+	top-padding: 25px;
+	margin-left: -200px;
+	width: 200px;
+	background: white;
+	border: 0px solid orange;
+	overflow: hidden;
+	
+/**	position: absolute;
+	top: 150px;
+	right: 0;
+	float: right;
+	width: 170px;
+	background: blue;
+	border: 2px solid orange;
+	overflow: hidden; 
+	margin-left: -170px;
+	**/
+}
+
+/** PORTLETS **/
+.column { width: 200px; float: left; padding-bottom: 0.1px; padding-top: 20px; }
+.portlet { margin: 0 .1em .1em 0; }
+.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 90%; font-color: #9b5c3b;}
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; font-size: 80%;}
+.ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
 
 /** Tables **/
 table {
