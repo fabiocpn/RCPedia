@@ -12,13 +12,5 @@
 					<a href="#pages">Pages</a><br>
 				</div>
 			</div>
-			<div class="portlet">
-				<div class="portlet-header">Teste</div>
-				<div class="portlet-content">
-					<a>Teste</a><br>
-					<a>Teste</a><br>
-					<a>Teste</a><br>
-				</div>
-			</div>
 		</div>
 	</div>

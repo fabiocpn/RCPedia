@@ -234,23 +234,6 @@ div.menu {
 	**/
 }
 
-/** PORTLETS **/
-.column { width: 200px; float: left; padding-bottom: 0.1px; padding-top: 20px; }
-.portlet { margin: 0 .1em .1em 0; }
-.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 90%; font-color: #9b5c3b;}
-.portlet-header .ui-icon { float: right; }
-.portlet-content { padding: 0.4em; font-size: 80%;}
-.ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
-.ui-sortable-placeholder * { visibility: hidden; }
-
-.column_t { width:80%; padding-bottom: 0.1px; padding-top: 20px; }
-.portlet_t { margin: 0 .1em .1em 0; }
-.portlet-header_t { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 110%;}
-.portlet-header_t .ui-icon { float: right; }
-.portlet-content_t { padding: 0.4em; font-size: 80%;}
-.ui-sortable-placeholder_t { border: 0px none; visibility: hidden !important; height: 50px !important; }
-.ui-sortable-placeholder_t * { visibility: hidden; }
-
 /** Tables **/
 table {
 	background: #fff;

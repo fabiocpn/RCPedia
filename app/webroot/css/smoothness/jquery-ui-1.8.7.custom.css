@@ -66,6 +66,16 @@
 /**.ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold; border-top:2px solid #006c87; }**/
 .ui-widget-header a { color: #222222; }
 
+.ui-widget_t { border: 1px solid black; padding-bottom: 5px; font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget_t .ui-widget_t { font-size: 1em; }
+.ui-widget_t input, .ui-widget_t select, .ui-widget_t textarea, .ui-widget_t button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+/**.ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }**/
+.ui-widget-content_t { border: 1px solid #aaaaaa; color: #222222;}
+.ui-widget-content_t a { color: #222222; }
+.ui-widget-header_t { border: 0px solid #aaaaaa; font-weight: bold; color: black; padding-bottom: 0px;}
+/**.ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold; border-top:2px solid #006c87; }**/
+.ui-widget-header_t a { color: #222222; }
+
 /* Interaction states
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #555555; }
@@ -572,3 +582,27 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  */
 .ui-progressbar { height:2em; text-align: left; }
 .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+
+
+
+
+/** PORTLETS **/
+.column { width: 200px; float: left; padding-bottom: 0.1px; padding-top: 20px; }
+.portlet { margin: 0 .1em .1em 0; }
+.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 90%; font-color: #9b5c3b;}
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; font-size: 80%;}
+.ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+
+.column_t { padding-bottom: 0.1px; padding-top: 20px; }
+.portlet_t { margin: 0 .1em .1em 0; }
+.portlet_t_col { margin: 0 .1em .1em 0; }
+.portlet-header_t { background: #acacac; margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 110%;}
+.portlet-header_t_col { background: #acacac; margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 110%;}
+.portlet-header_t .ui-icon { float: right; }
+.portlet-header_t_col .ui-icon { float: right; }
+.portlet-content_t { padding: 0.4em; font-size: 80%;}
+.ui-sortable-placeholder_t { border: 0px none; visibility: hidden !important; height: 50px !important; }
+.ui-sortable-placeholder_t * { visibility: hidden; }
+
