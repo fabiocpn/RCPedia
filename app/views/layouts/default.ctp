@@ -37,9 +37,16 @@
 <script type="text/javascript" src="/~fnavarro/retroDB2/js/jquery-ui-1.8.7.custom.min.js"></script>
 	<script>
 	$(function() {
-		$( ".column" ).sortable({
+		$( ".column",".column_t" ).sortable({
 			connectWith: ".column"
 		});
+
+		$( ".portlet_t" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+			.find( ".portlet-header_t" )
+				.addClass( "ui-widget-header_t ui-corner-all" )
+				.prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
+				.end()
+			.find( ".portlet-content_t" );
 
 		$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
 			.find( ".portlet-header" )
@@ -48,13 +55,18 @@
 				.end()
 			.find( ".portlet-content" );
 
+		$( ".portlet-header_t .ui-icon" ).click(function() {
+			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).parents( ".portlet_t:first" ).find( ".portlet-content_t" ).toggle();
+		});
+
 		$( ".portlet-header .ui-icon" ).click(function() {
 			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
 			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
 		});
 
-		$( ".column" ).disableSelection();
-		$( ".column" ).sortable( "option", "disabled", true );
+		$( ".column",".column_t" ).disableSelection();
+		$( ".column",".column_t" ).sortable( "option", "disabled", true );
 	});
 	</script>
 <body>

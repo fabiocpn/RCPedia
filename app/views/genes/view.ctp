@@ -39,6 +39,15 @@
 </div>
 
 <div class="view">
+		<div class="column_t">
+			<div class="portlet_t">
+				<div class="portlet-header_t">TesteTesteTesteTeste</div>
+				<div class="portlet-content_t">
+					TesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTesteTeste
+				</div>
+				</div>
+			</div>
+		</div>
 	<table border=0><tr><td width=800>
 	<dl>
 		<h3><?php  __('Parental Gene');?></h3>
