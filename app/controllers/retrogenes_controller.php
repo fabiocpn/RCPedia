@@ -112,11 +112,11 @@ class RetrogenesController extends AppController {
 				$this->paginate = array ( 'limit' => 20 );
 				$this->paginate = array ( 'order' => 'Retrogene.g_start' );
 				if ( isset($t_coord['start']) && isset($t_coord['end']) ) { 
-					$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'], 'Retrogene.g_start >=' => $t_coord['start'], 'Retrogene.g_end <=' => $t_coord['end'])));
+					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'], 'Retrogene.g_start >=' => $t_coord['start'], 'Retrogene.g_end <=' => $t_coord['end'])));
 				}
 				else {
 					if ( !isset($t_coord['start']) && !isset($t_coord['end']) ) {
-						$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'])));
+						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Retrogene.chr' => $t_coord['chr'])));
 					}	
 					else {
 						$this->Session->setFlash("Invalid Search");
