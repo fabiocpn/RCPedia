@@ -10,7 +10,7 @@
                         <!--<th><?php echo $this->Paginator->sort('Parental Gene','Gene.gene_name');?></th>-->
                         <th><?php echo $this->Paginator->sort('Genomic Region','g_region');?></th>
                         <th><?php echo $this->Paginator->sort('Method','Method.name');?></th>
-                        <th class="actions"><?php __('Actions');?></th>
+                        <th class="actions">&nbsp;</th>
         </tr>
         <?php
         $i = 0;

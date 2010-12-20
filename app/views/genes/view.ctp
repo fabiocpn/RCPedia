@@ -14,7 +14,7 @@
 						<th><?php __('End'); ?></th>
 						<th><?php __('Strand'); ?></th>
 						<th><?php __('Method'); ?></th>
-						<th class="actions"><?php __('Actions');?></th>
+						<th class="actions"></th>
 					<tr>
 					<?php
 						$i = 0;
@@ -110,7 +110,7 @@
 						<th><?php __('Id'); ?></th>
 						<th><?php __('Seqacc'); ?></th>
 						<th><?php __('N Exons'); ?></th>
-						<th class="actions"><?php __('Actions');?></th>
+						<th class="actions">&nbsp;</th>
 					</tr>
 					<?php
 						$i = 0;
