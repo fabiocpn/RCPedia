@@ -53,6 +53,7 @@ class RetrogenesController extends AppController {
 				$this->Session->write('is_coord',0);
 			}
 			$this->Session->write('search_string',$this->data['Retrogenes']['search_string']);
+			$this->Session->write('specie_id',$this->data['Retrogenes']['specie_id']);
 		}
 
 		###############
@@ -61,12 +62,13 @@ class RetrogenesController extends AppController {
 		#
 		###############
 		$string = $this->Session->read('search_string');
+		$specie_id = $this->Session->read('specie_id');
 
-		if ( isset($this->data['Retrogenes']['specie_id']) ) {
-			$specie_id = $this->data['Retrogenes']['specie_id'];
-		} else {
-			$specie_id = 1;
-		}
+		#if ( isset($this->data['Retrogenes']['specie_id']) ) {
+		#	$specie_id = $this->data['Retrogenes']['specie_id'];
+		#} else {
+		#	$specie_id = 1;
+		#}
 
 		###############
 		#
