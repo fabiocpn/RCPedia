@@ -22,7 +22,6 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php __('CakePHP: the rapid development php framework:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -38,6 +37,21 @@
 		<div id="header">
 			<h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1>
 		</div>
+
+
+		<div id="search">
+				<h1>Seach</h1>
+			<div class="search_b">
+				<?php echo $form->create("Retrogenes",array('type' => 'post','action' => 'search'));	?>
+				<div class="search_top">
+				<?php echo $form->input("specie_id", array('div' => false,'options' => array(1=>'Human',2=>'Chimp',3=>'Rhesus',4=>'Mouse',5=>'Rat',6=>'Dog',7=>'Zebrafish',8=>'Drosophila'))); ?>
+				</div>
+				<div class="search_bottom">
+				<?php echo $form->input("search_string", array('div' => false,'label' => false,'alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'))." ".$form->button('Search',array('name' => 'Search','class'=>'button search_button','div' => false,'type' => 'submit'))." ".$form->button('Clear', array('type'=>'reset','class'=>'button reset_button'))." ".$form->end();  ?>
+				</div>
+			</div>
+		</div>
+
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
@@ -54,6 +68,6 @@
 			?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<!--<?php echo $this->element('sql_dump'); ?>-->
 </body>
 </html>

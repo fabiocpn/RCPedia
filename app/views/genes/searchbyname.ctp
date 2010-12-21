@@ -1,12 +1,5 @@
 <div class="genes index">
 
-<?php
-	echo $form->create("Genes",array('type' => 'post','action' => 'searchbyname'));
-	echo $form->input("gene_name_q", array('label' => 'Search for Gene'));
-	echo $form->end("Search");
-?>
-
-
 <h2><?php __('Genes');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -55,12 +48,4 @@ echo $this->Paginator->counter(array(
 | 	<?php echo $this->Paginator->numbers();?>
 |
 <?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
-</div>
-</div>
-<div class="actions">
-<h3><?php __('Actions'); ?></h3>
-<ul>
-<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Species', true)), array('controller' => 'species', 'action' => 'index')); ?> </li>
-<li><?php echo $this->Html->link(sprintf(__('List %s', true), __('Refseqs', true)), array('controller' => 'refseqs', 'action' => 'index')); ?> </li>
-	</ul>
 </div>
