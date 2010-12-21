@@ -1,6 +1,7 @@
 
 <div class="view">
 	<div class="column_t">
+		<a id="retrogenes"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t"><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></div>
 
@@ -42,6 +43,7 @@
 					<?php endif; ?>
 			</div>
 		</div>
+		<a id="parental"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t">Paretal Gene Summary</div>
 			<div class="portlet-content_t">
@@ -101,6 +103,7 @@
 				</table>
 			</div>
 		</div>	
+		<a id="refseqs"></a>
 		<div class="portlet_t_col">
 			<div class="portlet-header_t_col">Refseqs</div>
 			<div class="portlet-content_t">
@@ -133,6 +136,7 @@
 				<?php endif; ?>
 			</div>
 		</div>
+		<a id="malignment"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t">Multiple Alignment</div>
 			<div class="portlet-content_t">
@@ -141,4 +145,28 @@
 				</font>		
 			</div>
 		</div>
+	</div>
+</div>
+	<div class="menu">
+		<div class="column">
+			<div class="portlet">
+				<div class="portlet-header">Table of Contents</div>
+				<div class="portlet-content">
+						<a href="#search">Search</a><br>
+						<a href="#retrogenes">Retrogenes</a><br>
+						<a href="#parental">Parental Summary</a><br>
+						<a href="#refseqs">Refseqs</a><br>
+						<a href="#malignment">Multiple Alignment</a><br>
+				</div>
+			</div>
+			<div class="portlet">
+				<div class="portlet-header">External Links</div>
+				<div class="portlet-content">
+						<a>NCBI</a><br>
+						<a>KEGG</a><br>
+						<a>HPRD</a><br>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

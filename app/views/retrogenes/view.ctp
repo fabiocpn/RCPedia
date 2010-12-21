@@ -137,6 +137,14 @@
 						<a href="#sequences">Related Sequences</a><br>
 				</div>
 			</div>
+			<div class="portlet">
+				<div class="portlet-header">External Links</div>
+				<div class="portlet-content">
+						<a>NCBI</a><br>
+						<a>KEGG</a><br>
+						<a>HPRD</a><br>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
