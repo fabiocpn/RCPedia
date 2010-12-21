@@ -45,6 +45,7 @@
 			.find( ".portlet-header_t" )
 				.addClass( "ui-widget-header_t ui-corner-all" )
 				.prepend( "<span class='ui-icon ui-icon-circle-triangle-n'></span>")
+				.prepend( "<span class='ui-icon-top ui-icon-arrowthickstop-1-n'></span>")
 				.end()
 			.find( ".portlet-content_t" );
 
@@ -52,6 +53,7 @@
 			.find( ".portlet-header_t_col" )
 				.addClass( "ui-widget-header_t ui-corner-all" )
 				.prepend( "<span class='ui-icon ui-icon-circle-triangle-s'></span>")
+				.prepend( "<span class='ui-icon-top ui-icon-arrowthickstop-1-n'></span>")
 				.end()
 			.find( ".portlet-content_t" ).hide();
 
@@ -67,9 +69,17 @@
 			$( this ).parents( ".portlet_t:first" ).find( ".portlet-content_t" ).toggle();
 		});
 
+		$( ".portlet-header_t .ui-icon-top" ).click(function() {
+			$('body').scrollTop(0);
+		});
+
 		$( ".portlet-header_t_col .ui-icon" ).click(function() {
 			$( this ).toggleClass( "ui-icon-circle-triangle-n" ).toggleClass( "ui-icon-circle-triangle-s" );
 			$( this ).parents( ".portlet_t_col:first" ).find( ".portlet-content_t" ).toggle();
+		});
+
+		$( ".portlet-header_t_col .ui-icon-top" ).click(function() {
+			$('body').scrollTop(0);
 		});
 
 		$( ".portlet-header .ui-icon" ).click(function() {

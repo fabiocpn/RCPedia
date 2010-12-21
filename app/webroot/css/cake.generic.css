@@ -97,10 +97,11 @@ ul, li {
 #content{
 	background: white; 
 	color: #333;
-	border: 0px solid white;
-	min-width: 1023px;
+	border: 0px solid yellow;
+	background: white;
 	overflow: hidden;
 	width: 100%;
+	min-width: 1020px;
 }
 #footer {
 	clear: both;
@@ -193,13 +194,12 @@ div.index,
 div.view {
 	position: relative;
 	padding: 10px 20px 10px 20px;
-	border: 0px solid red;
 	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
 	background: white;
 	margin-right: 200px;
-	min-width: 824px;
 	float: left;
-	width:auto;
+	border: 0px solid red;
+	width: auto;
 }
 div.actions {
 	float:left;
@@ -218,9 +218,9 @@ div.menu {
 	top-padding: 25px;
 	margin-left: -200px;
 	width: 200px;
-	background: white;
 	border: 0px solid orange;
 	overflow: hidden;
+	background: white;
 	
 /**	position: absolute;
 	top: 150px;
