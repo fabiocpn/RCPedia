@@ -1,6 +1,7 @@
 <div class="view">
 		<div class="column_t">
 			<div class="portlet_t">
+				<a id="summary"></a>
 				<div class="portlet-header_t">Summary</div>
 				<div class="portlet-content_t">
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -56,6 +57,7 @@
 			</div>
 
 			<div class="portlet_t">
+				<a id="parental"></a>
 				<div class="portlet-header_t">Parental Gene</div>
 				<div class="portlet-content_t">
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -89,6 +91,7 @@
 			</div>
 
 			<div class="portlet_t_col">
+				<a id="alignment"></a>
 				<div class="portlet-header_t_col">Alignment</div>
 				<div class="portlet-content_t">
 					<font size=-2>
@@ -97,22 +100,41 @@
 				</div>
 			</div>
 			<div class="portlet_t_col">
+				<a id="conservation"></a>
 				<div class="portlet-header_t_col">Interspecie Conservation</div>
 				<div class="portlet-content_t">
 					&nbsp;
 				</div>
 			</div>
 			<div class="portlet_t_col">
-				<div class="portlet-header_t_col">dS/dN</div>
+				<a id="dNdS"></a>
+				<div class="portlet-header_t_col">dN/dS</div>
 				<div class="portlet-content_t">
 					&nbsp;
 				</div>
 			</div>
 			<div class="portlet_t_col">
+				<a id="sequences"></a>
 				<div class="portlet-header_t_col">Related Sequences</div>
 				<div class="portlet-content_t">
 					<?php echo ">Retrogene<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
 					<?php echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="menu">
+		<div class="column">
+			<div class="portlet">
+				<div class="portlet-header">Table of Contents</div>
+				<div class="portlet-content">
+						<a href="#search">Search</a><br>
+						<a href="#summary">Summary</a><br>
+						<a href="#parental">Parental Gene</a><br>
+						<a href="#alignment">Alignment</a><br>
+						<a href="#conservation">Interspecie Conservation</a><br>
+						<a href="#dNdS">dN/dS</a><br>
+						<a href="#sequences">Related Sequences</a><br>
 				</div>
 			</div>
 		</div>
