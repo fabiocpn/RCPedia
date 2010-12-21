@@ -8,7 +8,8 @@
 			<div class="portlet">
 				<div class="portlet-header">Table of Contents</div>
 				<div class="portlet-content">
-					<a href="#search_res">Search</a><br>
+					<a href="#search">Search</a><br>
+					<a href="#search_res">Search Results</a><br>
 					<a href="#pages">Pages</a><br>
 				</div>
 			</div>
