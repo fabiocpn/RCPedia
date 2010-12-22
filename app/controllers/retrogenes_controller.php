@@ -201,11 +201,11 @@ class RetrogenesController extends AppController {
 
 		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".fa", 'w'); 
 
-		fwrite($fp,">retrogene\n".$this->Retrogene->data['Retrogene']['sequence']."\n");
-		fwrite($fp,">parental_gene\n".$this->Retrogene->data['Refseq']['sequence']."\n");
+		fwrite($fp,">".$this->Retrogene->data['Refseq']['seqacc']."\n".$this->Retrogene->data['Refseq']['sequence']."\n");
+		fwrite($fp,">".$this->Retrogene->data['Retrogene']['t_id']."\n".$this->Retrogene->data['Retrogene']['sequence']."\n");
 		fclose($fp);
 
-		system("/home/projects/tools/bin/clustalw2 -INFILE=/tmp/retroDB2/".$this->Session->id().".fa -OUTFILE=/tmp/retroDB2/".$this->Session->id().".aln > /dev/null");
+		system("/home/projects/tools/bin/clustalw2 -INFILE=/tmp/retroDB2/".$this->Session->id().".fa -OUTFILE=/tmp/retroDB2/".$this->Session->id().".aln -outorder=INPUT -QUICKTREE > /dev/null");
 		
 		$output = "<pre>";
 		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".aln","r");
