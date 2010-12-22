@@ -2,7 +2,7 @@
 		<div class="column_t">
 			<div class="portlet_t">
 				<a id="summary"></a>
-				<div class="portlet-header_t">Summary</div>
+				<div class="portlet-header_t">Retrogene Summary</div>
 				<div class="portlet-content_t">
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Retrogene Name'); ?></dt>
@@ -73,10 +73,6 @@
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								&nbsp;<?php echo $retrogene['Gene']['synonims']; ?>&nbsp;
 							</dd>	
-						<dt <?php if ($i % 2 == 0) echo $class;?>>Summary</dt>
-							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								&nbsp;<?php echo $retrogene['Gene']['summary']; ?>&nbsp;
-							</dd>
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Coordinate</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								&nbsp;<?php echo $retrogene['Gene']['chr'].":".$retrogene['Gene']['g_start']."-".$retrogene['Gene']['g_end']; ?>&nbsp;
@@ -85,6 +81,10 @@
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								&nbsp;<?php echo $retrogene['Gene']['strand']; ?>&nbsp;
 							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Summary</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								&nbsp;<?php echo $retrogene['Gene']['summary']; ?>&nbsp;
+							</dd>
 						</dt>
 					</dl>
 				</div>
@@ -92,7 +92,7 @@
 
 			<div class="portlet_t_col">
 				<a id="alignment"></a>
-				<div class="portlet-header_t_col">Alignment</div>
+				<div class="portlet-header_t_col">Alignment - Retrogene x Parental Gene</div>
 				<div class="portlet-content_t">
 					<font size=-2>
 					<?php echo $alignment?>

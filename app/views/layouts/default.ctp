@@ -103,6 +103,7 @@
 		</div>
 
 		<div id="search">
+			<!--<?php echo $this->Html->image("../img/logo.png",Array("class" => "floatleft")); ?>--!>
 			<div class="search_b">
 				<?php echo $form->create("Retrogenes",array('type' => 'post','action' => 'search'));	?>
 				<div class="search_top">

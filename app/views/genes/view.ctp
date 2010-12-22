@@ -26,11 +26,6 @@
 						<?php echo $gene['Gene']['synonims']; ?>
 						&nbsp;
 					</dd>
-					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Summary'); ?></dt>
-					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-						<?php echo $gene['Gene']['summary']; ?>
-						&nbsp;
-					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 						<div class="c_actions">
@@ -41,6 +36,11 @@
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 						<?php echo $gene['Gene']['strand']; ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Summary'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['summary']; ?>
 						&nbsp;
 					</dd>
 				</dl>
@@ -63,11 +63,12 @@
 					<?php if (!empty($retrogenes)):?>
 					<table cellpadding = "0" cellspacing = "0">
 					<tr>
-						<th><?php __('Id'); ?></th>
+						<th><?php __('Retrogene'); ?></th>
 						<th><?php __('Chr'); ?></th>
 						<th><?php __('Start'); ?></th>
 						<th><?php __('End'); ?></th>
 						<th><?php __('Strand'); ?></th>
+						<th><?php __('Genomic Region'); ?></th>
 						<th><?php __('Method'); ?></th>
 						<th class="actions"></th>
 					<tr>
@@ -85,6 +86,7 @@
 							<td><?php echo $retrogene['Retrogenes']['g_start'];?></td>
 							<td><?php echo $retrogene['Retrogenes']['g_end'];?></td>
 							<td><?php echo $retrogene['Retrogenes']['strand'];?></td>
+							<td><?php echo $retrogene['Retrogenes']['g_region']; ?></td>
 							<td><?php echo $retrogene['Method']['name'];?></td>
 							<td class="actions">
 				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
@@ -99,14 +101,12 @@
 		</div>
 		<a id="refseqs"></a>
 		<div class="portlet_t_col">
-			<div class="portlet-header_t_col">Refseqs</div>
+			<div class="portlet-header_t_col">NCBI Reference Sequences (mRNAs)</div>
 			<div class="portlet-content_t">
 				<?php if (!empty($gene['Refseq'])):?>
 				<table cellpadding = "0" cellspacing = "0">
 					<tr>
-						<th><?php __('Id'); ?></th>
-						<th><?php __('Seqacc'); ?></th>
-						<th><?php __('N Exons'); ?></th>
+						<th><?php __('RefSeq Id'); ?></th>
 						<th class="actions">&nbsp;</th>
 					</tr>
 					<?php
@@ -118,11 +118,9 @@
 							}
 						?>
 						<tr<?php echo $class;?>>
-							<td><?php echo $refseq['id'];?></td>
-							<td><?php echo $refseq['seqacc'];?></td>
-							<td><?php echo $refseq['n_exons'];?></td>
+							<td><?php echo $this->Html->link(__($refseq['seqacc'], true), "http://www.ncbi.nlm.nih.gov/sites/entrez?Db=nuccore&Cmd=DetailsSearch&Term=".$refseq['seqacc']); ?></td>
 							<td class="actions">
-								<?php echo $this->Html->link(__('Details', true), array('controller' => 'refseqs', 'action' => 'view', $refseq['id'])); ?>
+								<?php echo $this->Html->link(__('UCSC GB', true), "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$refseq['chr']."%3A".$refseq['g_start']."-".$refseq['g_end']); ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>
