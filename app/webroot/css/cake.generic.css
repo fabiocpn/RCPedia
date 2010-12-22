@@ -75,13 +75,12 @@ ul, li {
 }
 
 #header{
-	padding: 10px 20px;
+	padding: 5px 10px;
+	height: 15px;
 }
 #header h1 {
-	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	background: #003d4c /**url('../img/cake.icon.png') no-repeat left**/;
 	color: #fff;
-	padding: 0px 30px;
 }
 #header h1 a {
 	color: #fff;
@@ -200,6 +199,7 @@ div.view {
 	float: left;
 	border: 0px solid red;
 	width: auto;
+	min-width: 800px;
 }
 div.actions {
 	float:left;

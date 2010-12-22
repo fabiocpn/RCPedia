@@ -60,7 +60,7 @@
 		$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
 			.find( ".portlet-header" )
 				.addClass( "ui-widget-header ui-corner-all" )
-				.prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
+				.prepend( "<span class='ui-icon ui-icon-circle-triangle-n'></span>")
 				.end()
 			.find( ".portlet-content" );
 
@@ -83,7 +83,7 @@
 		});
 
 		$( ".portlet-header .ui-icon" ).click(function() {
-			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).toggleClass( "ui-icon-circle-triangle-s" ).toggleClass( "ui-icon-circle-triangle-n" );
 			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
 		});
 
@@ -94,7 +94,12 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link(__('RetroDB', true), 'http://cakephp.org');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Statistics', true), 'http://cakephp.org');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Credits', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Publications', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Comments', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
+			</h1>
 		</div>
 
 		<div id="search">
