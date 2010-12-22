@@ -200,6 +200,25 @@ div.view {
 	width: auto;
 	min-width: 800px;
 }
+div.page {
+	position: relative;
+	padding: 30px 30px 10px 20px;
+	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+	background: white;
+	margin-right: 200px;
+	float: left;
+	border: 0px solid red;
+	width: 500px;
+	min-width: 800px;
+}
+div.page h1{
+	color: #003d4c
+	font-weight: bold;
+	font-size: 140%;
+}
+div.page tex{
+	font-size:95%;
+}
 div.actions {
 	float:left;
 	width:16%;
@@ -210,6 +229,24 @@ div.actions h3 {
 	color:#777;
 }
 /** Menu **/
+div.news { 
+	float:left;
+	width:200px;
+	border: 1px solid #acacac;
+	margin: 20px 20px 20px 20px;
+}
+div.news h1 {
+	background: #e5e5e5;
+	font-size: 110%;
+	font-weight: bold;
+	border-bottom: 1px solid #acacac;
+}
+div.news li {
+	color: black;
+	font-size: 80%;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
 
 div.menu {
 	position: relative;

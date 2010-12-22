@@ -94,11 +94,11 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('RetroDB', true), 'http://cakephp.org');?>&nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Statistics', true), 'http://cakephp.org');?>&nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Credits', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Publications', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Comments', true), 'http://cakephp.org');?> &nbsp;&nbsp;&nbsp;
+			<h1><?php echo $this->Html->link(__('RetroDB', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Statistics', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/statistics');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Credits', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/credits');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Publications', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/publications');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Contact', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/contact');?> &nbsp;&nbsp;&nbsp;
 			</h1>
 		</div>
 
