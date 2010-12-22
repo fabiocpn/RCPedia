@@ -65,6 +65,18 @@
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								<?php echo $this->Html->link($retrogene['Gene']['gene_name'], array('controller' => 'genes', 'action' => 'view', $retrogene['Refseq']['gene_id'])); ?>&nbsp;
 							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Full Name</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['Gene']['full_name']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Also known as</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['Gene']['synonims']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Summary</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['Gene']['summary']; ?>&nbsp;
+							</dd>
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Coordinate</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								<?php echo $retrogene['Gene']['chr'].":".$retrogene['Gene']['g_start']."-".$retrogene['Gene']['g_end']; ?>&nbsp;
@@ -73,18 +85,6 @@
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
 								<?php echo $retrogene['Gene']['strand']; ?>&nbsp;
 							</dd>	
-						<dt <?php if ($i % 2 == 0) echo $class;?>>Full Name</dt>
-							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								<?php echo $retrogene['Gene']['full_name']; ?>&nbsp;
-							</dd>	
-						<dt <?php if ($i % 2 == 0) echo $class;?>>Aliases</dt>
-							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								<?php echo $retrogene['Gene']['synonims']; ?>&nbsp;
-							</dd>	
-						<dt <?php if ($i % 2 == 0) echo $class;?>>Summary</dt>
-							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								<?php echo $retrogene['Gene']['summary']; ?>&nbsp;
-							</dd>
 						</dt>
 					</dl>
 				</div>
