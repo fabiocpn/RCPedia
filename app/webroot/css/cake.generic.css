@@ -318,6 +318,7 @@ dl {
 }
 dl .altrow {
 	background: #f4f4f4;
+	min-width: 700px;
 }
 dt {
 	font-weight: bold;

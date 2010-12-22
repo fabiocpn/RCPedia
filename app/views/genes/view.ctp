@@ -1,10 +1,64 @@
 
 <div class="view">
 	<div class="column_t">
+		<a id="parental"></a>
+		<div class="portlet_t">
+			<div class="portlet-header_t">Paretal Gene Summary</div>
+			<div class="portlet-content_t">
+				<dl><?php $i = 0; $class = ' class="altrow"';?>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gene Name'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['gene_name']; ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Full Name'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['full_name']; ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $this->Html->link($gene['Specie']['name'], array('controller' => 'species', 'action' => 'view', $gene['Specie']['id'])); ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Also known as'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['synonims']; ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Summary'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['summary']; ?>
+						&nbsp;
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<div class="c_actions">
+							<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
+						</div>
+					</dd>
+					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
+					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+						<?php echo $gene['Gene']['strand']; ?>
+						&nbsp;
+					</dd>
+				</dl>
+			</div>
+		</div>	
+		<a id="g_retrogenes"></a>
+		<div class="portlet_t">
+			<div class="portlet-header_t">Retrogenes Graphical Representation</div>
+			<div class="portlet-content_t">
+				<center>
+				<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
+				</center>
+			</div>
+		</div>
+
 		<a id="retrogenes"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t"><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></div>
-
 			<div class="portlet-content_t">
 					<?php if (!empty($retrogenes)):?>
 					<table cellpadding = "0" cellspacing = "0">
@@ -43,66 +97,6 @@
 					<?php endif; ?>
 			</div>
 		</div>
-		<a id="parental"></a>
-		<div class="portlet_t">
-			<div class="portlet-header_t">Paretal Gene Summary</div>
-			<div class="portlet-content_t">
-				<table border=0><tr><td width=800>
-					<dl><?php $i = 0; $class = ' class="altrow"';?>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['Id']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gene Name'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['gene_name']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Full Name'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['full_name']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Aliases'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['synonims']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Summary'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['summary']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<div class="c_actions">
-								<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
-							</div>
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['strand']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $this->Html->link($gene['Specie']['name'], array('controller' => 'species', 'action' => 'view', $gene['Specie']['id'])); ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ensembl Id'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $gene['Gene']['Ensembl_id']; ?>
-							&nbsp;
-						</dd>
-					</dl>
-					</td><td>
-						<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
-					</td></tr>
-				</table>
-			</div>
-		</div>	
 		<a id="refseqs"></a>
 		<div class="portlet_t_col">
 			<div class="portlet-header_t_col">Refseqs</div>
@@ -153,8 +147,9 @@
 				<div class="portlet-header">Table of Contents</div>
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
-						<a href="#retrogenes">Retrogenes</a><br>
 						<a href="#parental">Parental Summary</a><br>
+						<a href="#g_retrogenes">Retrogenes Graphical Representation</a><br>
+						<a href="#retrogenes">Retrogenes</a><br>
 						<a href="#refseqs">Refseqs</a><br>
 						<a href="#malignment">Multiple Alignment</a><br>
 				</div>
