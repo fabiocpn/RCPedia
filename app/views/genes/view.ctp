@@ -30,7 +30,7 @@
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 						<div class="c_actions">
 							<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
+			 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
 						</div>
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
@@ -90,7 +90,7 @@
 							<td><?php echo $retrogene['Method']['name'];?></td>
 							<td class="actions">
 				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
-				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']); ?>
+				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']); ?>
 				 			</td>
 				
 						</tr>
@@ -120,7 +120,7 @@
 						<tr<?php echo $class;?>>
 							<td><?php echo $this->Html->link(__($refseq['seqacc'], true), "http://www.ncbi.nlm.nih.gov/sites/entrez?Db=nuccore&Cmd=DetailsSearch&Term=".$refseq['seqacc']); ?></td>
 							<td class="actions">
-								<?php echo $this->Html->link(__('UCSC GB', true), "http://genome.ucsc.edu/cgi-bin/hgTracks?org=&db=NCBI37&position=".$refseq['chr']."%3A".$refseq['g_start']."-".$refseq['g_end']); ?>
+								<?php echo $this->Html->link(__('UCSC GB', true), "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."position=".$refseq['chr']."%3A".$refseq['g_start']."-".$refseq['g_end']); ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>
