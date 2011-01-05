@@ -46,6 +46,7 @@
 				</dl>
 			</div>
 		</div>	
+
 		<a id="g_retrogenes"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t">Retrogenes Graphical Representation</div>
@@ -128,6 +129,26 @@
 				<?php endif; ?>
 			</div>
 		</div>
+		<a id="related_sequences"></a>
+		<div class="portlet_t_col">
+			<div class="portlet-header_t_col">Related Sequences</div>
+			<div class="portlet-content_t">
+					<?php if (!empty($retrogenes)):?>
+					<?php echo $refseq_seq ?>
+					<?php
+						$i = 0;
+						foreach ($retrogenes as $retrogene):
+							$class = null;
+							if ($i++ % 2 == 0) {
+								$class = ' class="altrow"';
+							}
+						?>
+							<?php echo ">".$retrogene['Retrogenes']['t_id']."_".$retrogene['Retrogenes']['chr']."<br><pre>". wordwrap (strtolower($retrogene['Retrogenes']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
+
+					<?php endforeach; ?>
+					<?php endif; ?>
+			</div>
+		</div>
 		<a id="malignment"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t">Multiple Alignment</div>
@@ -149,6 +170,7 @@
 						<a href="#g_retrogenes">Retrogenes Graphical Representation</a><br>
 						<a href="#retrogenes">Retrogenes</a><br>
 						<a href="#refseqs">Refseqs</a><br>
+						<a href="#related_sequences">Related Sequences</a><br>
 						<a href="#malignment">Multiple Alignment</a><br>
 				</div>
 			</div>

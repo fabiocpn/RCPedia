@@ -230,7 +230,7 @@ div.actions h3 {
 }
 /** Menu **/
 div.news { 
-	float:left;
+	float: right;
 	width:200px;
 	border: 1px solid #acacac;
 	margin: 20px 20px 20px 20px;
