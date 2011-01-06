@@ -205,7 +205,6 @@ div.page {
 	padding: 30px 30px 10px 20px;
 	overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
 	background: white;
-	margin-right: 200px;
 	float: left;
 	border: 0px solid red;
 	width: 500px;
@@ -230,7 +229,7 @@ div.actions h3 {
 }
 /** Menu **/
 div.news { 
-	float: right;
+	float: left;
 	width:200px;
 	border: 1px solid #acacac;
 	margin: 20px 20px 20px 20px;

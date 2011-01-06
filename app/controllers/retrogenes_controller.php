@@ -10,7 +10,7 @@ class RetrogenesController extends AppController {
 
 	function searchbyspecie($specie = null) {
 		$this->Retrogene->recursive = 0;
-		$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1,'Specie.name like' => "%$specie%")));
+		$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1,'Retrogene.specie_id' => "$specie")));
 	}
 
 	function search(){

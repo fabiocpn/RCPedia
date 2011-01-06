@@ -1,10 +1,3 @@
-<div class="news">
-<h1><b>Latest News</b></h1>
-<ul>
-<li><b>2010-12-22</b>: Alpha version of the RetroDB</li>
-<li><b>2010-11-10</b>: Initial Project Design and Development</li>
-</ul>
-</div>
 <div class="page">
 	<h1>Welcome to RetrogeneDB</h1>
 	<tex>
@@ -28,4 +21,11 @@
 	<h1>Search</h1>
 	RetroDB is based on search mechanisms. Retrocopies events can be searched on the top search box by coordinates, such as chr1 or chr1:78275455-79988153, which returns all retrocopies located whithin the searched area. Besides, it's yet possible to search retrocopies using their name, parental official gene name and full name.
 	</tex>
+</div>
+<div class="news">
+<h1><b>Latest News</b></h1>
+<ul>
+<li><b>2010-12-22</b>: Alpha version of the RetroDB</li>
+<li><b>2010-11-10</b>: Initial Project Design and Development</li>
+</ul>
 </div>
