@@ -34,16 +34,15 @@ class RetrogenesController extends AppController {
 		###############
 		if(isset($this->data['Retrogenes']['search_string'])) {
 			if ( preg_match("/^chr/",$this->data['Retrogenes']['search_string']) || preg_match("/^CHR/",$this->data['Retrogenes']['search_string']) ) {
-				$array = preg_split("/:|-/", $this->data['Retrogenes']['search_string']);
-
+				$array = preg_split("/[:|-\s]+/", $this->data['Retrogenes']['search_string']);
 				if ( isset($array[0]) ) { 
-					$t_coord['chr']   = $array[0]; 
+					$t_coord['chr']   = preg_replace("/,/","",$array[0]); 
 				}
 				if ( isset($array[1]) ) { 
-					$t_coord['start'] = $array[1]; 
+					$t_coord['start'] = preg_replace("/,/","",$array[1]); 
 				}
 				if ( isset($array[2]) ) { 
-					$t_coord['end']  = $array[2]; 
+					$t_coord['end']  = preg_replace("/,/","",$array[2]); 
 				}
 
 				$this->Session->write('coord',$t_coord);
