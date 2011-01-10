@@ -1,5 +1,3 @@
-
-<?php pr($ucsc_hg_customText); ?>
 <div class="view">
 	<div class="column_t">
 		<a id="parental"></a>
