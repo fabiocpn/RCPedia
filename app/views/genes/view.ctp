@@ -1,4 +1,5 @@
 
+<?php pr($ucsc_hg_customText); ?>
 <div class="view">
 	<div class="column_t">
 		<a id="parental"></a>
@@ -91,7 +92,7 @@
 							<td><?php echo $retrogene['Method']['name'];?></td>
 							<td class="actions">
 				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
-				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']); ?>
+				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']."&hgt.customText=".$ucsc_hg_customText); ?>
 				 			</td>
 				
 						</tr>

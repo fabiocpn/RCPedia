@@ -215,15 +215,13 @@ class RetrogenesController extends AppController {
 		$output .= "</pre>";
 		$this->set('alignment', $output);
 
-		#$fp = fopen("/tmp/retroDB2/".$this->Session->id().".txt", 'w');
 		$pos_start = $this->Retrogene->data['Retrogene']['g_start']-500;
 		$pos_end = $this->Retrogene->data['Retrogene']['g_end']+500;
 		$ucsc_track_text =  "browser position ".$this->Retrogene->data['Retrogene']['chr'].":".$pos_start."-".$pos_end." %0a";
-		$ucsc_track_text .= "track name=retrogene description=\"Retrogene position track(Blue)\" color=0,61,76, %0a";
+		$ucsc_track_text .= "track name=retrogene description=\"Retrogene position track\" color=0,61,76, %0a";
 		$ucsc_track_text .= $this->Retrogene->data['Retrogene']['chr']."%09".$this->Retrogene->data['Retrogene']['g_start']."%09".$this->Retrogene->data['Retrogene']['g_end']."%09 Retrogene_".$this->Retrogene->data['Retrogene']['t_id']." %0a";
-		#fwrite($fp,$ucsc_track_text);
-
 		$this->set('ucsc_hg_customText', $ucsc_track_text);
+
 	}
 }
 ?>
