@@ -48,7 +48,7 @@
 
 		<a id="g_retrogenes"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t">Retrogenes Graphical Representation</div>
+			<div class="portlet-header_t">Retrogene(s) Graphical Representation</div>
 			<div class="portlet-content_t">
 				<center>
 				<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
@@ -58,7 +58,7 @@
 
 		<a id="retrogenes"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t"><?php printf(__('Retrogenes from %s', true), __($gene['Gene']['gene_name'], true));?></div>
+			<div class="portlet-header_t"><?php printf(__('Retrogene(s) from %s', true), __($gene['Gene']['gene_name'], true));?></div>
 			<div class="portlet-content_t">
 					<?php if (!empty($retrogenes)):?>
 					<table cellpadding = "0" cellspacing = "0">
@@ -101,7 +101,7 @@
 		</div>
 		<a id="refseqs"></a>
 		<div class="portlet_t_col">
-			<div class="portlet-header_t_col">NCBI Reference Sequences (mRNAs)</div>
+			<div class="portlet-header_t_col">NCBI Reference Sequence(s) (mRNAs)</div>
 			<div class="portlet-content_t">
 				<?php if (!empty($gene['Refseq'])):?>
 				<table cellpadding = "0" cellspacing = "0">
@@ -150,7 +150,7 @@
 		</div>
 		<a id="malignment"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t">Multiple Alignment</div>
+			<div class="portlet-header_t">Alignment: Parental Gene X Retrogene(s)</div>
 			<div class="portlet-content_t">
 				<font size=-2>
 				<?php echo $alignment?>
@@ -166,11 +166,11 @@
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
 						<a href="#parental">Parental Summary</a><br>
-						<a href="#g_retrogenes">Retrogenes Graphical Representation</a><br>
-						<a href="#retrogenes">Retrogenes</a><br>
-						<a href="#refseqs">Refseqs</a><br>
+						<a href="#g_retrogenes">Retrogene(s) Graphical Representation</a><br>
+						<a href="#retrogenes">Retrogene(s)</a><br>
+						<a href="#refseqs">NCBI Reference Sequence(s)</a><br>
 						<a href="#related_sequences">Related Sequences</a><br>
-						<a href="#malignment">Multiple Alignment</a><br>
+						<a href="#malignment">Alignment: Parental Gene X Retrogene(s)</a><br>
 				</div>
 			</div>
 			<div class="portlet">
