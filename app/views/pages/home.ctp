@@ -1,5 +1,5 @@
 <div class="page">
-	<h1>Welcome to RetrogeneDB</h1>
+	<h1>Welcome to RetrogeneDB (*Alpha VERSION*)</h1>
 	<tex>
 	A complete database for retrogenes (processed pseudogenes) from CompBIO.
 	We currently indexed retrogenes from 7 species:<br>
