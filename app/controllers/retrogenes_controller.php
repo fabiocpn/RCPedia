@@ -87,18 +87,33 @@ class RetrogenesController extends AppController {
 				if ( count($this->viewVars['retrogenes']) == 0 ) {
 					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
 					if ( count($this->viewVars['retrogenes']) == 0 ) {
+						$this->set('retrogenes', $this->paginate('Gene', Array( 'Gene.gene_name' => $string,'Gene.specie_id' => $specie_id )));
+						if ( count($this->viewVars['retrogenes']) == 0 ) {
+							$this->set('gene_name_match', 0);
+						}
+						else {
+							$this->set('gene_name_match', 1);
+						}
+						#pr($this->viewVars['gene_name_match']);
+						#pr($this->viewVars['retrogenes']);
 						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, array ( 'OR' => array('Gene.gene_name' => $string)))));
+						if ( count($this->viewVars['retrogenes']) == 0 && $this->viewVars['gene_name_match'] == 1 ) {
+									$this->Session->setFlash(sprintf(__('There is no retrogenes for Parental Gene "%s"', true), $string));
+									$this->redirect(array('action' => 'search'));
+						}
+						else {
 						if ( count($this->viewVars['retrogenes']) == 0 ) {
 							$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
 						#if ( count($this->viewVars['retrogenes']) == 0 ) {
 						#	$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.synonims LIKE' => "%".$string."%")));
 							if ( count($this->viewVars['retrogenes']) == 0 ) {
 								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.full_name LIKE' => "%".$string."%")));
-								if ( count($this->viewVars['retrogenes']) == 0 ) {
+								if ( count($this->viewVars['retrogenes']) == 0  ) {
 									$this->Session->setFlash(sprintf(__('There is no retrogenes for "%s"', true), $string));
 									$this->redirect(array('action' => 'search'));
 								}
-							}	
+							}
+						}
 						}
 					}	
 				}
