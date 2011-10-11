@@ -46,9 +46,9 @@
 
 </script>
 </head>
-<link type="text/css" href="rcpedia/css/smoothness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />
-<script type="text/javascript" src="rcpedia/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="rcpedia/js/jquery-ui-1.8.7.custom.min.js"></script>
+<link type="text/css" href="/rcpedia/css/smoothness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />
+<script type="text/javascript" src="/rcpedia/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/rcpedia/js/jquery-ui-1.8.7.custom.min.js"></script>
 	<script>
 	$(function() {
 		$( ".column",".column_t" ).sortable({
