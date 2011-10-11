@@ -48,7 +48,7 @@
 
 		<a id="g_retrogenes"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t">Retrogene(s) Graphical Representation</div>
+			<div class="portlet-header_t">Retrocopy(s) Graphical Representation</div>
 			<div class="portlet-content_t">
 				<center>
 				<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$gene['Gene']['specie_id']."/".$gene['Gene']['gene_name'].".png",Array("width" => 300,"height" => 300)); ?>
@@ -58,12 +58,12 @@
 
 		<a id="retrogenes"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t"><?php printf(__('Retrogene(s) from %s', true), __($gene['Gene']['gene_name'], true));?></div>
+			<div class="portlet-header_t"><?php printf(__('Retrocopy(s) from %s', true), __($gene['Gene']['gene_name'], true));?></div>
 			<div class="portlet-content_t">
 					<?php if (!empty($retrogenes)):?>
 					<table cellpadding = "0" cellspacing = "0">
 					<tr>
-						<th><?php __('Retrogene'); ?></th>
+						<th><?php __('Retrocopy'); ?></th>
 						<th><?php __('Chr'); ?></th>
 						<th><?php __('Start'); ?></th>
 						<th><?php __('End'); ?></th>
@@ -150,7 +150,7 @@
 		</div>
 		<a id="malignment"></a>
 		<div class="portlet_t">
-			<div class="portlet-header_t">Alignment: Parental Gene X Retrogene(s)</div>
+			<div class="portlet-header_t">Alignment: Parental Gene X Retrocopy(s)</div>
 			<div class="portlet-content_t">
 				<font size=-2>
 				<?php echo $alignment?>
@@ -166,11 +166,11 @@
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
 						<a href="#parental">Parental Summary</a><br>
-						<a href="#g_retrogenes">Retrogene(s) Graphical Representation</a><br>
-						<a href="#retrogenes">Retrogene(s)</a><br>
+						<a href="#g_retrogenes">Retrocopy(s) Graphical Representation</a><br>
+						<a href="#retrogenes">Retrocopy(s)</a><br>
 						<a href="#refseqs">NCBI Reference Sequence(s)</a><br>
 						<a href="#related_sequences">Related Sequences</a><br>
-						<a href="#malignment">Alignment: Parental Gene X Retrogene(s)</a><br>
+						<a href="#malignment">Alignment: Parental Gene X Retrocopy(s)</a><br>
 				</div>
 			</div>
 			<div class="portlet">

@@ -1,7 +1,7 @@
 <div class="retrogenes form">
 <?php echo $this->Form->create('Retrogene');?>
 	<fieldset>
- 		<legend><?php printf(__('Add %s', true), __('Retrogene', true)); ?></legend>
+ 		<legend><?php printf(__('Add %s', true), __('Retrocopies', true)); ?></legend>
 	<?php
 		echo $this->Form->input('t_id');
 		echo $this->Form->input('specie_id');

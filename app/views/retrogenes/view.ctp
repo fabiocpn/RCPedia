@@ -2,10 +2,10 @@
 		<div class="column_t">
 			<div class="portlet_t">
 				<a id="summary"></a>
-				<div class="portlet-header_t">Retrogene Summary</div>
+				<div class="portlet-header_t">Retrocopy Summary</div>
 				<div class="portlet-content_t">
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Retrogene Name'); ?></dt>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Retrocopy Name'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo $retrogene['Retrogene']['t_id']; ?>
 							&nbsp;
@@ -92,7 +92,7 @@
 
 			<div class="portlet_t_col">
 				<a id="alignment"></a>
-				<div class="portlet-header_t_col">Alignment - Retrogene x Parental Gene</div>
+				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
 				<div class="portlet-content_t">
 					<font size=-2>
 					<?php echo $alignment?>

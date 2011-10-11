@@ -46,9 +46,9 @@
 
 </script>
 </head>
-<link type="text/css" href="/~fnavarro/retroDB2/css/smoothness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />
-<script type="text/javascript" src="/~fnavarro/retroDB2/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="/~fnavarro/retroDB2/js/jquery-ui-1.8.7.custom.min.js"></script>
+<link type="text/css" href="rcpedia/css/smoothness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />
+<script type="text/javascript" src="rcpedia/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="rcpedia/js/jquery-ui-1.8.7.custom.min.js"></script>
 	<script>
 	$(function() {
 		$( ".column",".column_t" ).sortable({
@@ -108,11 +108,11 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('RetroDB', true), 'http://www.compbio.ludwig.org.br/retrogenesdb/');?>&nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Statistics', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/statistics');?>&nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Credits', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/credits');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Publications', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/publications');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Contact', true), 'http://www.compbio.ludwig.org.br/~fnavarro/retroDB2/pages/contact');?> &nbsp;&nbsp;&nbsp;
+			<h1><?php echo $this->Html->link(__('RCPedia', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Statistics', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/statistics');?>&nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Credits', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/credits');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Publications', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/publications');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Contact', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact');?> &nbsp;&nbsp;&nbsp;
 			</h1>
 		</div>
 
