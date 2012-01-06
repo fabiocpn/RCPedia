@@ -27,14 +27,14 @@
 							<?php echo $retrogene['Retrogene']['strand']; ?>
 							&nbsp;
 						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Overlap (nt)'); ?></dt>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('RefSeq Overlap'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Retrogene']['overlap']; ?>
+							<?php echo $retrogene['Retrogene']['abs_overlap']." (".sprintf("%01.2f",$retrogene['Retrogene']['per_overlap']*100)."%)"; ?>
 							&nbsp;
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Identity'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Retrogene']['ident']; ?>
+							<?php echo sprintf("%01.2f",$retrogene['Retrogene']['ident']*100)."%"; ?>
 							&nbsp;
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genomic Region'); ?></dt>
@@ -119,7 +119,7 @@
 				<div class="portlet-content_t">
 					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
 					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>
-					<?php echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
+					<!--<?php echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>-->
 				</div>
 			</div>
 		</div>
@@ -141,8 +141,10 @@
 			<div class="portlet">
 				<div class="portlet-header">External Links</div>
 				<div class="portlet-content">
-						<a>NCBI</a><br>
-						<a>KEGG</a><br>
+
+						<?php echo $this->Html->link("NCBI", "http://www.ncbi.nlm.nih.gov/gene/".$retrogene['Gene']['ncbi_id']); ?>&nbsp;<br>
+						<?php echo $this->Html->link("UCSC", "http://genome.ucsc.edu/cgi-bin/hgGene?hgg_gene=".$retrogene['Gene']['ucsc_id']."&hgg_chrom=".$retrogene['Gene']['chr']."&hgg_start=".$retrogene['Gene']['g_start']."&hgg_end=".$retrogene['Gene']['g_end']."&hgg_type=knownGene&db=hg19"); ?>&nbsp;<br>
+						<?php echo $this->Html->link("KEGG", "http://www.genome.jp/dbget-bin/www_bget?hsa:".$retrogene['Gene']['ncbi_id']); ?>&nbsp;<br>
 						<a>HPRD</a><br>
 				</div>
 			</div>

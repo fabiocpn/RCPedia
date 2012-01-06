@@ -176,8 +176,9 @@
 			<div class="portlet">
 				<div class="portlet-header">External Links</div>
 				<div class="portlet-content">
-						<a>NCBI</a><br>
-						<a>KEGG</a><br>
+						<?php echo $this->Html->link("NCBI", "http://www.ncbi.nlm.nih.gov/gene/".$gene['Gene']['ncbi_id']); ?>&nbsp;<br>
+						<?php echo $this->Html->link("UCSC", "http://genome.ucsc.edu/cgi-bin/hgGene?hgg_gene=".$gene['Gene']['ucsc_id']."&hgg_chrom=".$gene['Gene']['chr']."&hgg_start=".$gene['Gene']['g_start']."&hgg_end=".$gene['Gene']['g_end']."&hgg_type=knownGene&db=hg19"); ?>&nbsp;<br>
+						<?php echo $this->Html->link("KEGG", "http://www.genome.jp/dbget-bin/www_bget?hsa:".$gene['Gene']['ncbi_id']); ?>&nbsp;<br>
 						<a>HPRD</a><br>
 				</div>
 			</div>
