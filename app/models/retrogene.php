@@ -31,6 +31,13 @@ class Retrogene extends AppModel {
 			'conditions' => 'Refseq.gene_id = Gene.id',
 			'fields' => '',
 			'order' => ''
+		),
+		'TGene' => array(
+			'className' => 'Gene',
+			'foreignKey' => 'target_gene_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

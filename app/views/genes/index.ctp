@@ -21,7 +21,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $gene['Gene']['gene_name']; ?>&nbsp;</td>
-		<td><?php echo $gene['Gene']['full_name']; ?>&nbsp;</td>
+		<td><?php echo $gene['Gene']['gene_oficial_name']; ?>&nbsp;</td>
 		<td><?php echo $gene['Gene']['chr']; ?>&nbsp;</td>
 		<td><?php echo $gene['Gene']['g_start']; ?>&nbsp;</td>
 		<td><?php echo $gene['Gene']['g_end']; ?>&nbsp;</td>

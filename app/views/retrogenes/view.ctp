@@ -56,6 +56,20 @@
 				</div>
 			</div>
 
+			<div class="portlet_t_col">
+				<a id="dNdS"></a>
+				<div class="portlet-header_t_col">Genomic Context</div>
+				<div class="portlet-content_t">
+					<dl>
+						<dt>
+								<!--<?php echo "<iframe src=\"http://genome.ucsc.edu/cgi-bin/hgTracks?".$retrogene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogene']['chr']."%3A".($retrogene['Retrogene']['g_start']-5000)."-".($retrogene['Retrogene']['g_end']+5000)."&hgt.customText=".$ucsc_hg_customText."\" Frameborder=0 scrolling=auto width=830 height=800></iframe>"; ?>&nbsp; -->
+
+
+						</dt>
+					</dl>
+				</div>
+			</div>
+
 			<div class="portlet_t">
 				<a id="parental"></a>
 				<div class="portlet-header_t">Parental Gene</div>
@@ -67,7 +81,7 @@
 							</dd>	
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Full Name</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								<?php echo $retrogene['Gene']['full_name']; ?>&nbsp;
+								<?php echo $retrogene['Gene']['gene_oficial_name']; ?>&nbsp;
 							</dd>	
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Also known as</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
@@ -90,6 +104,43 @@
 				</div>
 			</div>
 
+
+			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "<!--";?>
+			<div class="portlet_t">
+				<a id="parental"></a>
+				<div class="portlet-header_t">Target Gene - <?php echo $retrogene['Retrogene']['g_region']?></div>
+				<div class="portlet-content_t">
+					<dl><?php $i = 0; $class = ' class="altrow"';?>
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Gene Name</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $this->Html->link($retrogene['TGene']['gene_name'], array('controller' => 'genes', 'action' => 'view', $retrogene['Retrogene']['target_gene_id'])); ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Full Name</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['TGene']['gene_oficial_name']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Also known as</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['TGene']['synonims']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Coordinate</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['TGene']['chr'].":".$retrogene['TGene']['g_start']."-".$retrogene['TGene']['g_end']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Strand</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['TGene']['strand']; ?>&nbsp;
+							</dd>	
+						<dt <?php if ($i % 2 == 0) echo $class;?>>Summary</dt>
+							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
+								<?php echo $retrogene['TGene']['summary']; ?>&nbsp;
+							</dd>
+						</dt>
+					</dl>
+				</div>
+			</div>
+			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "-->";?>
+
 			<div class="portlet_t_col">
 				<a id="alignment"></a>
 				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
@@ -102,13 +153,6 @@
 			<div class="portlet_t_col">
 				<a id="conservation"></a>
 				<div class="portlet-header_t_col">Interspecie Conservation</div>
-				<div class="portlet-content_t">
-					&nbsp;
-				</div>
-			</div>
-			<div class="portlet_t_col">
-				<a id="dNdS"></a>
-				<div class="portlet-header_t_col">dN/dS</div>
 				<div class="portlet-content_t">
 					&nbsp;
 				</div>
@@ -150,4 +194,10 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div style="padding:10px;">
+<div id="sv1" class="SeqViewerApp" >
+<a href="?embedded=true&id=NC_003284&from=13598210&to=13599776"> </a>
+</div>
 </div>

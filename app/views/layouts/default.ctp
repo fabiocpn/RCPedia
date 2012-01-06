@@ -45,7 +45,17 @@
   })();
 
 </script>
+<!--
+<link rel="stylesheet" type="text/css" href="http://www.ncbi.nlm.nih.gov/core/extjs/ext-3.4.0/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="http://www.ncbi.nlm.nih.gov/core/extjs/ext-3.4.0/resources/css/xtheme-gray.css" id="theme">
+<link rel="stylesheet" type="text/css" href="http://www.ncbi.nlm.nih.gov/projects/sviewer/css/style.css" media="screen, projection, print"/>
+
+<script type='text/javascript' src='http://www.ncbi.nlm.nih.gov/core/extjs/ext-3.4.0/adapter/ext/ext-base.js'></script>
+<script type='text/javascript' src='http://www.ncbi.nlm.nih.gov/core/extjs/ext-3.4.0/ext-all.js'></script>
+<script type="text/javascript" src="http://www.ncbi.nlm.nih.gov/projects/sviewer/js/main.js"></script>
+-->
 </head>
+
 <link type="text/css" href="/rcpedia/css/smoothness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />
 <script type="text/javascript" src="/rcpedia/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="/rcpedia/js/jquery-ui-1.8.7.custom.min.js"></script>

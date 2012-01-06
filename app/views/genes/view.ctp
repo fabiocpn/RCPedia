@@ -12,7 +12,7 @@
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Full Name'); ?></dt>
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-						<?php echo $gene['Gene']['full_name']; ?>
+						<?php echo $gene['Gene']['gene_oficial_name']; ?>
 						&nbsp;
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
