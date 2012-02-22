@@ -107,7 +107,7 @@ class RetrogenesController extends AppController {
 						#if ( count($this->viewVars['retrogenes']) == 0 ) {
 						#	$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.synonims LIKE' => "%".$string."%")));
 							if ( count($this->viewVars['retrogenes']) == 0 ) {
-								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.full_name LIKE' => "%".$string."%")));
+								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
 								if ( count($this->viewVars['retrogenes']) == 0  ) {
 									$this->Session->setFlash(sprintf(__('There is no retrogenes for "%s"', true), $string));
 									$this->redirect(array('action' => 'search'));
