@@ -26,7 +26,7 @@
 	<?php echo $this->Html->image($char_gregion); ?>&nbsp;
 	<br><br><br>
 	<center>
-	<?php echo $this->Html->image("http://www.compbio.ludwig.org.br/~fnavarro/circos/".$species['Species']['abreviation'].".png",Array("width" => 450,"height" => 450)); ?>
+	<?php echo $this->Html->image("http://www.bioinfo.mochsl.org.br/~fnavarro/circos/circos.".strtolower($species['Species']['abreviation']).".png",Array("width" => 450,"height" => 450)); ?>
 	</center>
 	
 </div>
