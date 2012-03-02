@@ -51,7 +51,7 @@
 			<div class="portlet-header_t">Retrocopy(s) Graphical Representation</div>
 			<div class="portlet-content_t">
 				<center>
-				<?php echo $this->Html->image("http://www.bioinfo.mochsl.org.br/~fnavarro/circos/new/".$gene['Gene']['Id'].".png",Array("width" => 300,"height" => 300)); ?>
+				<?php echo $this->Html->image("http://www.bioinfo.mochsl.org.br/~fnavarro/circos/new/".$gene['Gene']['Id'].".circos.png",Array("width" => 300,"height" => 300)); ?>
 				</center>
 			</div>
 		</div>
