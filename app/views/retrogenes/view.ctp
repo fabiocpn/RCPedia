@@ -1,3 +1,4 @@
+<?php print_r($retrogene['Expression']) ?>
 <div class="view">
 		<div class="column_t">
 			<div class="portlet_t">
@@ -37,6 +38,22 @@
 							<?php echo sprintf("%01.2f",$retrogene['Retrogene']['ident']*100)."%"; ?>
 							&nbsp;
 						</dd>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Flanking DRs'); ?></dt>
+						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+							<div class="none">
+							<?php $teste = split('[@]', strtoupper($retrogene['Retrogene']['direct_repeat'])); 
+        						  	$one = split('[;]',$teste[0]);
+                                    $two = split('[;]',$teste[1]);
+									$three = split('[;]',$teste[2]);
+								echo "<table border=1 CELLSPACING=0 cellpadding=\"0\"><tr><td><center><font size=1>$one[0]</font></td><td><center><font size=1>$two[0]</td><td><center><font size=1>$three[0]</td></tr>";
+								echo "<tr><td><center><pre>".str_replace("#","\n",$one[2])."</td><td><center><pre>".str_replace("#","\n",$two[2])."</td><td><center><pre>".str_replace("#","\n",$three[2])."</td></tr>";
+								echo "<tr><td><center><font size=1>$one[1]</td><td><center><font size=1>$two[1]</td><td><center><font size=1>$three[1]</td></tr></table>";
+
+	
+							; ?>
+							&nbsp;
+							</div>
+						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genomic Region'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo $retrogene['Retrogene']['g_region']; ?>
@@ -56,6 +73,7 @@
 				</div>
 			</div>
 
+			<div class="portlet_t">
 			<div class="portlet_t_col">
 				<a id="dNdS"></a>
 				<div class="portlet-header_t_col">Genomic Context</div>
@@ -163,7 +181,28 @@
 				<div class="portlet-content_t">
 					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
 					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>
-					<!--<?php echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>-->
+					<?php #echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
+				</div>
+			</div>
+			<div class="portlet_t">
+				<a id="expression"></a>
+				<div class="portlet-header_t_col">Expression</div>
+				<div class="portlet-content_t">
+
+				
+					<?php 
+						$tissues = "";
+						$exp_values = "";
+						foreach ( $retrogene['Expression'] as $tissue ):
+							$tissues .= "|".$tissue['tissue'];
+							$exp_values .= $tissue['support'].",";
+							//echo $tissue['tissue'].":".$tissue['support']."<br>";
+						endforeach;
+						$exp_values = substr_replace($exp_values,"",-1);
+
+						echo "<img src=\"http://chart.apis.google.com/chart?chxl=0:$tissues&chxr=0,0,1&chxs=0,676767,10,0,lt,676767&chxt=x,y&chbh=a,4,10&chs=400x300&cht=bvs&chd=t:$exp_values \" width=\"400\" height=\"300\" alt=\"\" />";
+					?>&nbsp;
+					
 				</div>
 			</div>
 		</div>

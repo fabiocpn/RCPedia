@@ -1,16 +1,18 @@
 <div class="page">
 	<h1>Welcome to RCPedia (*Alpha VERSION*)</h1>
 	<tex>
-	A complete database for retrocopies (processed pseudogenes) from Laboratory of Bioinformatics at IEP, Hospital Sírio Libanês.
-	We currently indexed retrocopies from 7 species genomes:<br>
+	A complete database for retrocopies (processed pseudogenes and retrogenes) from Group of Bioinformatics at IEP, Hospital Sírio Libanês.
+	We currently indexed retrocopies from 6 primates genomes:<br>
 	<ul>
 	<li>Human</li>
 	<li>Chimp</li>
+	<li>Gorilla</li>
+	<li>Orangutan</li>
 	<li>Rhesus</li>
-	<li>Mouse</li>
+	<li>Marmoset</li>
+	<!-- <li>Mouse</li>
 	<li>Rat</li>
-	<li>Zebrafish</li>
-	<li>Drosophila</li>
+	<li>Zebrafish</li> -->
 	</ul>
 	</tex>
 	<br>

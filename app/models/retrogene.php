@@ -40,5 +40,12 @@ class Retrogene extends AppModel {
 			'order' => ''
 		)
 	);
+
+	var $hasMany = array(
+		'Expression' => array (
+			'className' => 'Expression',
+			'foreignKey' => 'rcp_id'
+		)
+	);
 }
 ?>
