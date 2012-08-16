@@ -1,4 +1,3 @@
-<?php print_r($retrogene['Expression']) ?>
 <div class="view">
 		<div class="column_t">
 			<div class="portlet_t">
@@ -73,7 +72,6 @@
 				</div>
 			</div>
 
-			<div class="portlet_t">
 			<div class="portlet_t_col">
 				<a id="dNdS"></a>
 				<div class="portlet-header_t_col">Genomic Context</div>
@@ -186,22 +184,53 @@
 			</div>
 			<div class="portlet_t">
 				<a id="expression"></a>
-				<div class="portlet-header_t_col">Expression</div>
+				<div class="portlet-header_t">Expression</div>
 				<div class="portlet-content_t">
 
-				
-					<?php 
-						$tissues = "";
-						$exp_values = "";
-						foreach ( $retrogene['Expression'] as $tissue ):
-							$tissues .= "|".$tissue['tissue'];
-							$exp_values .= $tissue['support'].",";
-							//echo $tissue['tissue'].":".$tissue['support']."<br>";
-						endforeach;
-						$exp_values = substr_replace($exp_values,"",-1);
+				    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+				    <script type="text/javascript">
+				      google.load('visualization', '1', {packages: ['corechart']});
+				    </script>
+				    <script type="text/javascript">
+				      function drawVisualization() {
+				        // Create and populate the data table.
+				        var data = google.visualization.arrayToDataTable([
 
-						echo "<img src=\"http://chart.apis.google.com/chart?chxl=0:$tissues&chxr=0,0,1&chxs=0,676767,10,0,lt,676767&chxt=x,y&chbh=a,4,10&chs=400x300&cht=bvs&chd=t:$exp_values \" width=\"400\" height=\"300\" alt=\"\" />";
-					?>&nbsp;
+						<?php 
+							$tissues = "";
+							$exp_values = "";
+							$one_color = "['Tissue','Support'],";
+							foreach ( $retrogene['Expression'] as $tissue ):
+								$one_color .= "['".$tissue['tissue']."',".$tissue['support']."],";
+								$tissues .= "'".$tissue['tissue']."',";
+								$exp_values .= $tissue['support'].",";
+							endforeach;
+							$exp_values = substr_replace($exp_values,"",-1);
+							$one_color = substr_replace($one_color,"",-1);
+							$tissues = substr_replace($tissues,"",-1);
+
+							//echo "[ $tissues ], [ $exp_values ]";
+							echo "$one_color";
+						?>
+				        ]);
+      
+				        // Create and draw the visualization.
+				        new google.visualization.ColumnChart(document.getElementById('visualization')).
+				            draw(data,
+				                 {title:"RNA-seq support expression",
+				                  width:600, height:400,
+				                  vAxis: {title: "Support"}
+							     
+							     }
+				            );
+			    	  }
+      
+
+				      google.setOnLoadCallback(drawVisualization);
+				    </script>
+
+					<div id="visualization" style="width: 600px; height: 400px;"></div>
+				
 					
 				</div>
 			</div>
