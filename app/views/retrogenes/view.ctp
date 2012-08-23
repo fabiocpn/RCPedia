@@ -10,6 +10,15 @@
 							<?php echo $retrogene['Retrogene']['t_id']; ?>
 							&nbsp;
 						</dd>
+							
+						<?php if ( strcmp($retrogene['Retrogene']['put_annotation'] ,"") == 0 ) echo "<!--";?>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Putative Annotation'); ?></dt>
+						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+							<?php echo $retrogene['Retrogene']['put_annotation']; ?>
+							&nbsp;
+						</dd>
+						<?php if ( strcmp($retrogene['Retrogene']['put_annotation'] ,"") == 0 ) echo "-->";?>
+
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo $retrogene['Specie']['name']; ?>
@@ -37,22 +46,33 @@
 							<?php echo sprintf("%01.2f",$retrogene['Retrogene']['ident']*100)."%"; ?>
 							&nbsp;
 						</dd>
+						<?php if ( strcmp($retrogene['Retrogene']['direct_repeat'] ,"") == 0 ) echo "<!--";?>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Flanking DRs'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<div class="none">
 							<?php $teste = split('[@]', strtoupper($retrogene['Retrogene']['direct_repeat'])); 
-        						  	$one = split('[;]',$teste[0]);
-                                    $two = split('[;]',$teste[1]);
-									$three = split('[;]',$teste[2]);
-								echo "<table border=1 CELLSPACING=0 cellpadding=\"0\"><tr><td><center><font size=1>$one[0]</font></td><td><center><font size=1>$two[0]</td><td><center><font size=1>$three[0]</td></tr>";
-								echo "<tr><td><center><pre>".str_replace("#","\n",$one[2])."</td><td><center><pre>".str_replace("#","\n",$two[2])."</td><td><center><pre>".str_replace("#","\n",$three[2])."</td></tr>";
-								echo "<tr><td><center><font size=1>$one[1]</td><td><center><font size=1>$two[1]</td><td><center><font size=1>$three[1]</td></tr></table>";
+        						  	if ( !empty($teste[0]) ) $one = split('[;]',$teste[0]);
+                                    if ( !empty($teste[1]) ) $two = split('[;]',$teste[1]);
+									if ( !empty($teste[2]) ) $three = split('[;]',$teste[2]);
+
+								echo "<table border=1 CELLSPACING=0 cellpadding=\"0\"><tr>";
+								if ( !empty($one[0]) )   echo "<td><center><font size=1>$one[0]</font></td>";
+								if ( !empty($two[0]) )   echo "<td><center><font size=1>$two[0]</td>";
+								if ( !empty($three[0]) ) echo "<td><center><font size=1>$three[0]</td>";
+								echo "</tr><tr>";
+								if ( !empty($one[2]) )   echo "<td><center><pre>".str_replace("#","\n",$one[2])."</td>";
+								if ( !empty($two[2]) )   echo "<td><center><pre>".str_replace("#","\n",$two[2])."</td>";
+								if ( !empty($three[2]) ) echo "<td><center><pre>".str_replace("#","\n",$three[2])."</td>";
+								echo "</tr><tr>";
+								if ( !empty($one[1]) )   echo "<td><center><font size=1>$one[1]</td>";
+								if ( !empty($two[1]) )   echo "<td><center><font size=1>$two[1]</td>";
+								if ( !empty($three[1]) ) echo "<td><center><font size=1>$three[1]</td>";
+								echo "</tr></table>";
 
 	
 							; ?>
 							&nbsp;
-							</div>
 						</dd>
+						<?php if ( strcmp($retrogene['Retrogene']['direct_repeat'] ,"") == 0 ) echo "-->";?>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genomic Region'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo $retrogene['Retrogene']['g_region']; ?>
@@ -72,15 +92,13 @@
 				</div>
 			</div>
 
-			<div class="portlet_t_col">
+			<div class="portlet_t">
 				<a id="dNdS"></a>
-				<div class="portlet-header_t_col">Genomic Context</div>
+				<div class="portlet-header_t">Genomic Context</div>
 				<div class="portlet-content_t">
 					<dl>
 						<dt>
-								<!--<?php echo "<iframe src=\"http://genome.ucsc.edu/cgi-bin/hgTracks?".$retrogene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogene']['chr']."%3A".($retrogene['Retrogene']['g_start']-5000)."-".($retrogene['Retrogene']['g_end']+5000)."&hgt.customText=".$ucsc_hg_customText."\" Frameborder=0 scrolling=auto width=830 height=800></iframe>"; ?>&nbsp; -->
-
-
+    							<?php echo "<iframe id=\"sviframe\" src=\"http://www.ncbi.nlm.nih.gov/projects/sviewer/embedded_iframe.html?iframe=sviframe&embedded=minimal&noslider=true&id=".$retrogene['Chr_accession']['accession']."&tracks=[key:gene_model_track,Options:GeneOnly]&from=".($retrogene['Retrogene']['g_start']-100000)."&to=".($retrogene['Retrogene']['g_end']+100000)."&mk=".$retrogene['Retrogene']['g_start'].":".$retrogene['Retrogene']['g_end']."|Retrocopy\" width=\"900\" height=\"250\" ></iframe>"; ?>
 						</dt>
 					</dl>
 				</div>
@@ -157,35 +175,29 @@
 			</div>
 			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "-->";?>
 
-			<div class="portlet_t_col">
-				<a id="alignment"></a>
-				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
-				<div class="portlet-content_t">
-					<font size=-2>
-					<?php echo $alignment?>
-					</font>		
-				</div>
-			</div>
-			<div class="portlet_t_col">
+			<div class="portlet_t">
 				<a id="conservation"></a>
-				<div class="portlet-header_t_col">Interspecie Conservation</div>
+				<div class="portlet-header_t">Interspecies Conservation</div>
 				<div class="portlet-content_t">
-					&nbsp;
+					<table class='def_img'>
+						<?php echo $conserved ?>
+					</table>
+					<!--	<table class='def_img'>
+							<tr><td><?php echo $this->Html->image('hs_on.jpg',array('width'=>250)) ?></td></tr>
+							<tr><td><?php echo $this->Html->image('pt_on.jpg',array('width'=>250))?></td></tr>
+							<tr><td><?php echo $this->Html->image('gg_on.jpg',array('width'=>250))?></td></tr>
+							<tr><td><?php echo $this->Html->image('pa_on.jpg',array('width'=>250))?></td></tr>
+							<tr><td><?php echo $this->Html->image('rm_on.jpg',array('width'=>250))?></td></tr>
+							<tr><td><?php echo $this->Html->image('cj_on.jpg',array('width'=>250))?></td></tr>
+						</table>
+					-->
+					</div>					
 				</div>
-			</div>
-			<div class="portlet_t_col">
-				<a id="sequences"></a>
-				<div class="portlet-header_t_col">Related Sequences</div>
-				<div class="portlet-content_t">
-					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
-					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>
-					<?php #echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
-				</div>
-			</div>
 			<div class="portlet_t">
 				<a id="expression"></a>
 				<div class="portlet-header_t">Expression</div>
 				<div class="portlet-content_t">
+
 
 				    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 				    <script type="text/javascript">
@@ -209,8 +221,8 @@
 							$one_color = substr_replace($one_color,"",-1);
 							$tissues = substr_replace($tissues,"",-1);
 
-							//echo "[ $tissues ], [ $exp_values ]";
-							echo "$one_color";
+							echo "[ 'Year',$tissues ], [ 'Tissue',$exp_values ]";
+							#echo "$one_color";
 						?>
 				        ]);
       
@@ -219,7 +231,7 @@
 				            draw(data,
 				                 {title:"RNA-seq support expression",
 				                  width:600, height:400,
-				                  vAxis: {title: "Support"}
+				                  vAxis: {title: "Support",minValue:0}
 							     
 							     }
 				            );
@@ -230,8 +242,24 @@
 				    </script>
 
 					<div id="visualization" style="width: 600px; height: 400px;"></div>
-				
-					
+				</div>
+			</div>
+			<div class="portlet_t_col">
+				<a id="alignment"></a>
+				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
+				<div class="portlet-content_t">
+					<font size=-2>
+					<?php echo $alignment?>
+					</font>		
+				</div>
+			</div>
+			<div class="portlet_t_col">
+				<a id="sequences"></a>
+				<div class="portlet-header_t_col">Related Sequences</div>
+				<div class="portlet-content_t">
+					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
+					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>
+					<?php #echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
 				</div>
 			</div>
 		</div>

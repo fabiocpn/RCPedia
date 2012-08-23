@@ -212,7 +212,47 @@ class RetrogenesController extends AppController {
 		}
 
 		$this->set('retrogene', $this->Retrogene->read(null, $id));
+		#$this->Retrogene->recursive = 2;
+		#$retrogene = $this->Retrogene->find('first', array('conditions' => array('Retrogene.id' => $id)));
+		#$this->set(compact('retrogene'));
+		#pr($this->Retrogene);
 
+
+		###########################################
+		#
+		# Conservation view assembly
+		#
+		###########################################
+		$cons_output = "";
+		$species = array('Hs','Pt','Gg','Pa','Rm','Cj');
+		foreach ( $species as $specie ):
+			$buffer = "";
+			$conserved = 0;
+			foreach ( $this->Retrogene->data['Conservation'] as $cons ):
+				$cons_rcp = $this->Retrogene->find('first', array('conditions' => array('Retrogene.id' => $cons['rcp_id2'])));
+
+				if ( $cons_rcp['Specie']['abreviation'] == "$specie" ):
+					$conserved = 1;
+					$buffer = $cons_rcp;
+				endif;
+	
+			endforeach;
+			if ( $conserved == 1):
+				$cons_output .= '<tr><td><a href=/rcpedia/retrogenes/view/'.$buffer['Retrogene']['id'].'><img src="/rcpedia/img/'.$specie.'_on.jpg" width="250" alt="" /></a></td></tr>';
+			else:
+				$cons_output .= '<tr><td><img src="/rcpedia/img/'.$specie.'_off.jpg" width="250" alt="" /></td></tr>';
+			endif;
+		endforeach;
+		$cons_output .= "";
+		$this->set('conserved',$cons_output);
+
+
+
+		###########################################
+		#
+		# Multiple Alignment
+		#
+		###########################################
 		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".fa", 'w'); 
 
 		fwrite($fp,">".$this->Retrogene->data['Refseq']['seqacc']."\n".$this->Retrogene->data['Refseq']['sequence']."\n");

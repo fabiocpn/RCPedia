@@ -38,6 +38,11 @@ class Retrogene extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Chr_accession' => array(
+			'className' => 'Chr_accession',
+			'foreignKey' => false,
+			'conditions' => 'Chr_accession.chr = Retrogene.chr and Chr_accession.specie_id = Retrogene.specie_id'
 		)
 	);
 
@@ -45,7 +50,12 @@ class Retrogene extends AppModel {
 		'Expression' => array (
 			'className' => 'Expression',
 			'foreignKey' => 'rcp_id'
+		),
+		'Conservation' => array (
+			'className' => 'Conservation',
+			'foreignKey' => 'rcp_id1'
 		)
+	
 	);
 }
 ?>
