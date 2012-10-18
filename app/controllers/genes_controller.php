@@ -26,6 +26,9 @@ class GenesController extends AppController {
 	}
 
 	function view($id = null) {
+
+    	$this->set('title_for_layout', 'Parental Gene');    
+
 		if (!$id) {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'gene'));
 			$this->redirect(array('action' => 'index'));

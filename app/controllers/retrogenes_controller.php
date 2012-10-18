@@ -206,6 +206,9 @@ class RetrogenesController extends AppController {
 	}
 
 	function view($id = null) {
+		
+    	$this->set('title_for_layout', 'Retrocopy');    
+
 		if (!$id) {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'retrogene'));
 			$this->redirect(array('action' => 'index'));

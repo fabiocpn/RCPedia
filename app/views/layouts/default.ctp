@@ -131,7 +131,7 @@
 			<div class="search_b">
 				<?php echo $form->create("Retrogenes",array('name' => 'Retrogenes', 'type' => 'post','action' => 'search'));	?>
 				<div class="search_top">
-				<?php echo $form->input("specie_id", array('label' => 'Specie:','div' => false,'options' => array(1=>'Human',2=>'Chimp',9=>'Oragutan',3=>'Rhesus',10=>'Marmoset',4=>'Mouse',5=>'Rat'))); ?>
+				<?php echo $form->input("specie_id", array('label' => 'Specie:','div' => false,'options' => array(1=>'Human',2=>'Chimp',9=>'Oragutan',3=>'Rhesus',10=>'Marmoset'))); ?>
 				</div>
 				<div class="search_bottom">
 				<?php echo $form->input("search_string", array('div' => false,'label' => false,'alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'))." ".$form->button('Search',array('name' => 'Search','class'=>'button search_active','div' => false,'type' => 'submit'))." ".$form->button('Clear', array( 'name' => 'clear', 'type'=>'reset','class'=>'button reset_button','onClick' => "document.getElementById('data[Retrogenes][specie_id]').value='';"))." ".$form->end();  ?>

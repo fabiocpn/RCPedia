@@ -27,6 +27,7 @@
 <div class="news">
 <h1><b>Latest News</b></h1>
 <ul>
+<li><b>2012-09-15</b>: Beta version of the RCPedia</li>
 <li><b>2010-12-22</b>: Alpha version of the RCPedia</li>
 <li><b>2010-11-10</b>: Initial Project Design and Development</li>
 </ul>
