@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<a id="retrogenes"></a>
+		<a id="retrocopies"></a>
 		<div class="portlet_t">
 			<div class="portlet-header_t"><?php printf(__('Retrocopy(s) from %s', true), __($gene['Gene']['gene_name'], true));?></div>
 			<div class="portlet-content_t">
@@ -89,7 +89,7 @@
 							<td><?php echo $retrogene['Retrogenes']['g_region']; ?></td>
 							<td><?php echo $retrogene['Method']['name'];?></td>
 							<td class="actions">
-				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrogenes','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
+				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrocopies','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
 				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']."&hgt.customText=".$ucsc_hg_customText); ?>
 				 			</td>
 				
@@ -169,7 +169,7 @@
 						<a href="#search">Search</a><br>
 						<a href="#parental">Parental Summary</a><br>
 						<a href="#g_retrogenes">Retrocopies Movement</a><br>
-						<a href="#retrogenes">Retrocopies</a><br>
+						<a href="#retrocopies">Retrocopies</a><br>
 						<a href="#refseqs">NCBI Ref. Sequence(s)</a><br>
 						<a href="#related_sequences">Related Sequences</a><br>
 						<a href="#malignment">Retrocopy alignment</a><br>
