@@ -249,7 +249,9 @@
 				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
 				<div class="portlet-content_t">
 					<font size=-2>
-					<?php echo $alignment?>
+					<pre>
+					<?php echo $retrogene['Retrogene']['malignment'] ?>
+					</pre>
 					</font>		
 				</div>
 			</div>

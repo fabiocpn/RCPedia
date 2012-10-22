@@ -254,25 +254,25 @@ class RetrogenesController extends AppController {
 		###########################################
 		#
 		# Multiple Alignment
-		#
+		#   - Update: Multiple alignment is now done off-line
 		###########################################
-		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".fa", 'w'); 
-
-		fwrite($fp,">".$this->Retrogene->data['Refseq']['seqacc']."\n".$this->Retrogene->data['Refseq']['sequence']."\n");
-		fwrite($fp,">".$this->Retrogene->data['Retrogene']['t_id']."\n".$this->Retrogene->data['Retrogene']['sequence']."\n");
-		fclose($fp);
-
-		system("/home/projects/tools/bin/clustalw2 -INFILE=/tmp/retroDB2/".$this->Session->id().".fa -OUTFILE=/tmp/retroDB2/".$this->Session->id().".aln -outorder=INPUT -QUICKTREE > /dev/null");
-		
-		$output = "<pre>";
-		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".aln","r");
-		while (!feof($fp)) {
-			$output .= fgets($fp);
-		}
-		fclose($fp);
-		$output .= "</pre>";
-		$this->set('alignment', $output);
-
+#		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".fa", 'w'); 
+#
+#		fwrite($fp,">".$this->Retrogene->data['Refseq']['seqacc']."\n".$this->Retrogene->data['Refseq']['sequence']."\n");
+#		fwrite($fp,">".$this->Retrogene->data['Retrogene']['t_id']."\n".$this->Retrogene->data['Retrogene']['sequence']."\n");
+#		fclose($fp);
+#
+#		system("/home/projects/tools/bin/clustalw2 -INFILE=/tmp/retroDB2/".$this->Session->id().".fa -OUTFILE=/tmp/retroDB2/".$this->Session->id().".aln -outorder=INPUT -QUICKTREE > /dev/null");
+#		
+#		$output = "<pre>";
+#		$fp = fopen("/tmp/retroDB2/".$this->Session->id().".aln","r");
+#		while (!feof($fp)) {
+#			$output .= fgets($fp);
+#		}
+#		fclose($fp);
+#		$output .= "</pre>";
+#		$this->set('alignment', $output);
+#
 		$pos_start = $this->Retrogene->data['Retrogene']['g_start']-500;
 		$pos_end = $this->Retrogene->data['Retrogene']['g_end']+500;
 		$ucsc_track_text =  "browser position ".$this->Retrogene->data['Retrogene']['chr'].":".$pos_start."-".$pos_end." %0a";

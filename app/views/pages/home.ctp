@@ -1,5 +1,5 @@
 <div class="page">
-	<h1>Welcome to RCPedia (*Alpha VERSION*)</h1>
+	<h1>Welcome to RCPedia (*Beta VERSION*)</h1>
 	<tex>
 	A complete database for retrocopies (processed pseudogenes and retrogenes) from Group of Bioinformatics at IEP, Hospital Sírio Libanês.
 	We currently indexed retrocopies from 6 primates genomes:<br>
