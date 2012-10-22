@@ -93,12 +93,12 @@
 			</div>
 
 			<div class="portlet_t">
-				<a id="dNdS"></a>
+				<a id="context"></a>
 				<div class="portlet-header_t">Genomic Context</div>
 				<div class="portlet-content_t">
 					<dl>
 						<dt>
-    							<?php echo "<iframe id=\"sviframe\" src=\"http://www.ncbi.nlm.nih.gov/projects/sviewer/embedded_iframe.html?iframe=sviframe&embedded=minimal&noslider=true&id=".$retrogene['Chr_accession']['accession']."&tracks=[key:gene_model_track,Options:GeneOnly]&from=".($retrogene['Retrogene']['g_start']-100000)."&to=".($retrogene['Retrogene']['g_end']+100000)."&mk=".$retrogene['Retrogene']['g_start'].":".$retrogene['Retrogene']['g_end']."|Retrocopy\" width=\"900\" height=\"250\" ></iframe>"; ?>
+    							<?php echo "<iframe id=\"sviframe\" src=\"http://www.ncbi.nlm.nih.gov/projects/sviewer/embedded_iframe.html?iframe=sviframe&embedded=minimal&noslider=true&id=".$retrogene['Chr_accession']['accession']."&tracks=[key:gene_model_track,Options:GeneOnly]&from=".($retrogene['Retrogene']['g_start']-100000)."&to=".($retrogene['Retrogene']['g_end']+100000)."&mk=".$retrogene['Retrogene']['g_start'].":".$retrogene['Retrogene']['g_end']."|Retrocopy\" width=\"800\" height=\"250\" ></iframe>"; ?>
 						</dt>
 					</dl>
 				</div>
@@ -273,10 +273,11 @@
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
 						<a href="#summary">Summary</a><br>
+						<a href="#context">Genomic Context</a><br>
 						<a href="#parental">Parental Gene</a><br>
-						<a href="#alignment">Alignment</a><br>
+						<a href="#expression">Expression</a><br>
+						<a href="#alignment">Parental Alignment</a><br>
 						<a href="#conservation">Interspecie Conservation</a><br>
-						<a href="#dNdS">dN/dS</a><br>
 						<a href="#sequences">Related Sequences</a><br>
 				</div>
 			</div>
