@@ -168,11 +168,11 @@
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
 						<a href="#parental">Parental Summary</a><br>
-						<a href="#g_retrogenes">Retrocopy(s) Graphical Representation</a><br>
-						<a href="#retrogenes">Retrocopy(s)</a><br>
-						<a href="#refseqs">NCBI Reference Sequence(s)</a><br>
+						<a href="#g_retrogenes">Retrocopies Movement</a><br>
+						<a href="#retrogenes">Retrocopies</a><br>
+						<a href="#refseqs">NCBI Ref. Sequence(s)</a><br>
 						<a href="#related_sequences">Related Sequences</a><br>
-						<a href="#malignment">Alignment: Parental Gene X Retrocopy(s)</a><br>
+						<a href="#malignment">Retrocopy alignment</a><br>
 				</div>
 			</div>
 			<div class="portlet">
