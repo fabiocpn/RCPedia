@@ -117,7 +117,7 @@ class RetrocopiesController extends AppController {
 						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'AND' => array('Gene.gene_name' => $string)))));
 
 						if ( count($this->viewVars['retrogenes']) == 0 && $this->viewVars['gene_name_match'] == 1 ) {
-								$this->Session->setFlash(sprintf(__('There is no retrogenes for Parental Gene "%s"', true), $string));
+								$this->Session->setFlash(sprintf(__('There is no retrocopies for Parental Gene "%s"', true), $string));
 								#$this->redirect(array('action' => 'search'));
 						}
 						else {
@@ -126,7 +126,7 @@ class RetrocopiesController extends AppController {
 								if ( count($this->viewVars['retrogenes']) == 0 ) {
 									$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
 									if ( count($this->viewVars['retrogenes']) == 0  ) {
-										$this->Session->setFlash(sprintf(__('There is no retrogenes for "%s"', true), $string));
+										$this->Session->setFlash(sprintf(__('There is no retrocopies for "%s"', true), $string));
 										#$this->redirect(array('action' => 'search'));
 									}
 								}
@@ -227,7 +227,7 @@ class RetrocopiesController extends AppController {
     	$this->set('title_for_layout', 'Retrocopy');    
 
 		if (!$id) {
-			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'retrogene'));
+			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'retrocopy'));
 			#$this->redirect(array('action' => 'index'));
 		}
 
