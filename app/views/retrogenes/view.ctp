@@ -195,6 +195,7 @@
 					-->
 					</div>					
 				</div>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 10 ) echo "<!--";?>
 			<div class="portlet_t">
 				<a id="expression"></a>
 				<div class="portlet-header_t">Expression</div>
@@ -246,6 +247,8 @@
 					<div id="visualization" style="width: 600px; height: 400px;"></div>
 				</div>
 			</div>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 10 ) echo "-->";?>
+
 			<div class="portlet_t_col">
 				<a id="alignment"></a>
 				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
@@ -279,7 +282,9 @@
 						<a href="#context">Genomic Context</a><br>
 		<?php if ( $retrogene['Retrogene']['specie_id'] == 11 ) echo "-->";?>
 						<a href="#parental">Parental Gene</a><br>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 10 ) echo "<!--";?>
 						<a href="#expression">Expression</a><br>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 10 ) echo "-->";?>
 						<a href="#alignment">Parental Alignment</a><br>
 						<a href="#conservation">Interspecie Conservation</a><br>
 						<a href="#sequences">Related Sequences</a><br>
