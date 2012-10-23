@@ -9,11 +9,6 @@ class RetrocopiesController extends AppController {
 		$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1)));
 	}
 
-	function searchbyspecie($specie = null) {
-		$this->Retrogene->recursive = 0;
-		$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1,'Retrogene.specie_id' => "$specie")));
-	}
-
 	function search(){
 		###############
 		#
@@ -34,7 +29,7 @@ class RetrocopiesController extends AppController {
 		#
 		###############
 		if(isset($this->data['Retrocopies']['search_string'])) {
-			if ( preg_match("/^chr/",$this->data['Retrocopies']['search_string']) || preg_match("/^CHR/",$this->data['Retrocopies']['search_string']) ) {
+			if ( preg_match("/^chr[0-9]/",$this->data['Retrocopies']['search_string']) || preg_match("/^CHR[0-9]/",$this->data['Retrocopies']['search_string']) ) {
 				$array = preg_split("/[:|-\s]+/", $this->data['Retrocopies']['search_string']);
 				if ( isset($array[0]) ) { 
 					$t_coord['chr']   = preg_replace("/,/","",$array[0]); 
@@ -48,6 +43,7 @@ class RetrocopiesController extends AppController {
 
 				$this->Session->write('coord',$t_coord);
 				$this->Session->write('is_coord',1);
+	
 			}
 			else {
 				$this->Session->write('is_coord',0);
@@ -63,6 +59,9 @@ class RetrocopiesController extends AppController {
 		###############
 		$string = $this->Session->read('search_string');
 		$specie_id = $this->Session->read('specie_id');
+		#$string = $this->data['Retrocopies']['search_string'];
+		#$specie_id = $this->data['Retrocopies']['specie_id'];
+
 
 		#if ( isset($this->data['Retrogenes']['specie_id']) ) {
 		#	$specie_id = $this->data['Retrogenes']['specie_id'];
@@ -84,37 +83,54 @@ class RetrocopiesController extends AppController {
 			if ( ! $this->Session->read('is_coord') ) {
 				$this->paginate = array ( 'order' => 'Gene.gene_name' );
 				$this->paginate = array ( 'limit' => 50 );
+				################################
+				#
+				# Search_string eq RCP_name(t_id)
+				#
+				################################
 				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
 				if ( count($this->viewVars['retrogenes']) == 0 ) {
+
+					################################
+					#
+					# Search_string eq ( NCBI_id or ENSEMBL_id )
+					#
+					################################
 					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
 					if ( count($this->viewVars['retrogenes']) == 0 ) {
-						$this->set('retrogenes', $this->paginate('Gene', Array( 'Gene.gene_name' => $string,'Gene.specie_id' => $specie_id )));
-						if ( count($this->viewVars['retrogenes']) == 0 ) {
+						################################
+						#
+						# Search_string eq Geme_name
+						#
+						################################
+
+						#Is there any gene with exact gene_name match? 
+						$this->set('gene', $this->paginate('Gene', Array( 'Gene.gene_name' => $string,'Gene.specie_id' => $specie_id )));
+						if ( count($this->viewVars['gene']) == 0 ) {
 							$this->set('gene_name_match', 0);
 						}
 						else {
 							$this->set('gene_name_match', 1);
 						}
-						#pr($this->viewVars['gene_name_match']);
 						#pr($this->viewVars['retrogenes']);
-						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'OR' => array('Gene.gene_name' => $string)))));
+
+						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'AND' => array('Gene.gene_name' => $string)))));
+
 						if ( count($this->viewVars['retrogenes']) == 0 && $this->viewVars['gene_name_match'] == 1 ) {
-									$this->Session->setFlash(sprintf(__('There is no retrogenes for Parental Gene "%s"', true), $string));
-									$this->redirect(array('action' => 'search'));
+								$this->Session->setFlash(sprintf(__('There is no retrogenes for Parental Gene "%s"', true), $string));
+								#$this->redirect(array('action' => 'search'));
 						}
 						else {
-						if ( count($this->viewVars['retrogenes']) == 0 ) {
-							$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
-						#if ( count($this->viewVars['retrogenes']) == 0 ) {
-						#	$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1, 'Gene.synonims LIKE' => "%".$string."%")));
 							if ( count($this->viewVars['retrogenes']) == 0 ) {
-								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
-								if ( count($this->viewVars['retrogenes']) == 0  ) {
-									$this->Session->setFlash(sprintf(__('There is no retrogenes for "%s"', true), $string));
-									$this->redirect(array('action' => 'search'));
+								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
+								if ( count($this->viewVars['retrogenes']) == 0 ) {
+									$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
+									if ( count($this->viewVars['retrogenes']) == 0  ) {
+										$this->Session->setFlash(sprintf(__('There is no retrogenes for "%s"', true), $string));
+										#$this->redirect(array('action' => 'search'));
+									}
 								}
 							}
-						}
 						}
 					}	
 				}
@@ -137,7 +153,7 @@ class RetrocopiesController extends AppController {
 					}	
 					else {
 						$this->Session->setFlash("Invalid Search");
-						$this->redirect(array('action' => 'search'));
+						#$this->redirect(array('action' => 'search'));
 					}
 				}
 			}
@@ -167,7 +183,7 @@ class RetrocopiesController extends AppController {
 			if ( !preg_match("/^chr/",$array[0]) || !preg_match("/^CHR/",$array[0]) ) {
 				#$this->Session->setFlash(sprintf(__('Invalid Seach', true), 'retrogene'));
 				$this->Session->setFlash("Invalid Search");
-				$this->redirect(array('action' => 'searchbycoord'));
+				#$this->redirect(array('action' => 'searchbycoord'));
 			}
 
 			if ( isset($array[0]) ) { 
@@ -195,7 +211,7 @@ class RetrocopiesController extends AppController {
 				}	
 				else {
 					$this->Session->setFlash("Invalid Search");
-					$this->redirect(array('action' => 'searchbycoord'));
+					#$this->redirect(array('action' => 'searchbycoord'));
 				}
 			}
 		#$this->set('retrogenes', $this->paginate('Retrogene', Array('Refseq.n_exons >' => 1, 'Retrogene.chr' => $this->Session->read('coord')['chr'] )));
@@ -212,7 +228,7 @@ class RetrocopiesController extends AppController {
 
 		if (!$id) {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true), 'retrogene'));
-			$this->redirect(array('action' => 'index'));
+			#$this->redirect(array('action' => 'index'));
 		}
 
 		$this->set('retrogene', $this->Retrogene->read(null, $id));

@@ -129,7 +129,7 @@
 		<div id="search">
 			<!--<?php echo $this->Html->image("../img/logo.png",Array("class" => "floatleft")); ?>--!>
 			<div class="search_b">
-				<?php echo $form->create("Retrocopies",array('name' => 'Retrogenes', 'type' => 'post','action' => 'search'));	?>
+				<?php echo $form->create("Retrocopies",array('name' => 'Retrocopies', 'type' => 'post','action' => 'search'));	?>
 				<div class="search_top">
 				<?php echo $form->input("specie_id", array('label' => 'Specie:','div' => false,'options' => array(1=>'Human',2=>'Chimp',11=>'Gorilla',9=>'Oragutan',3=>'Rhesus',10=>'Marmoset'))); ?>
 				</div>

@@ -3,6 +3,7 @@
 		<a id="search_res"></a>
 		<?php include 'table_body.template';?>
 	</div>
+<!--<?php echo $this->element('sql_dump'); ?>-->
 	<div class="menu">
 		<div class="column">
 			<div class="portlet">
