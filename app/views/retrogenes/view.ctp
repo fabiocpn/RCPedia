@@ -147,7 +147,7 @@
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Gene Name</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
-								<?php echo $this->Html->link($retrogene['TGene']['gene_name'], array('controller' => 'genes', 'action' => 'view', $retrogene['Retrogene']['target_gene_id'])); ?>&nbsp;
+								<b><?php echo $retrogene['TGene']['gene_name']; ?></b>&nbsp;
 							</dd>	
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Full Name</dt>
 							<dd <?php if ($i++ % 2 == 0) echo $class;?>>
