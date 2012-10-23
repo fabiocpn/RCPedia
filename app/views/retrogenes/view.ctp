@@ -92,6 +92,7 @@
 				</div>
 			</div>
 
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 11 ) echo "<!--";?>
 			<div class="portlet_t">
 				<a id="context"></a>
 				<div class="portlet-header_t">Genomic Context</div>
@@ -103,6 +104,7 @@
 					</dl>
 				</div>
 			</div>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 11 ) echo "-->";?>
 
 			<div class="portlet_t">
 				<a id="parental"></a>
@@ -273,7 +275,9 @@
 				<div class="portlet-content">
 						<a href="#search">Search</a><br>
 						<a href="#summary">Summary</a><br>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 11 ) echo "<!--";?>
 						<a href="#context">Genomic Context</a><br>
+		<?php if ( $retrogene['Retrogene']['specie_id'] == 11 ) echo "-->";?>
 						<a href="#parental">Parental Gene</a><br>
 						<a href="#expression">Expression</a><br>
 						<a href="#alignment">Parental Alignment</a><br>
