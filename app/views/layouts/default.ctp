@@ -119,9 +119,10 @@
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link(__('RCPedia', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/');?>&nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Statistics', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/statistics');?>&nbsp;&nbsp;&nbsp;
+				<!--<?php echo $this->Html->link(__('Statistics', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/statistics');?>&nbsp;&nbsp;&nbsp;-->
 				<?php echo $this->Html->link(__('Credits', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/credits');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('Publications', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/publications');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('FAQ/Help', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/help');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('Contact', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact');?> &nbsp;&nbsp;&nbsp;
 			</h1>
 		</div>
