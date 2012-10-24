@@ -21,14 +21,14 @@
 
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Specie']['name']; ?>
+							<?php echo $retrogene['Specie']['sci_name']; ?>
 							&nbsp;
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<div class="c_actions">
 								<?php echo $retrogene['Retrogene']['chr'].":".$retrogene['Retrogene']['g_start']."-".$retrogene['Retrogene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<?php echo $this->Html->link('UCSC GB', "".$retrogene['Retrogene']['ucsc_track']); ?>
+								<?php echo $this->Html->link('UCSC GB', "".$retrogene['Retrogene']['ucsc_track'],array('target'=>'_blank')); ?>
 							</div>
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>

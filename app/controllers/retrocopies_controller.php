@@ -194,7 +194,7 @@ class RetrocopiesController extends AppController {
 	
 			endforeach;
 			if ( $conserved == 1):
-				$cons_output .= '<tr><td><a href=/rcpedia/retrocopies/view/'.$buffer['Retrogene']['id'].'><img src="/rcpedia/img/'.$specie.'_on.jpg" width="250" alt="" /></a></td></tr>';
+				$cons_output .= '<tr><td><a href=/rcpedia/retrocopies/view/'.$buffer['Retrogene']['id'].'><img src="/rcpedia/img/'.$specie.'_on.jpg" width="250" alt="" target="_blank"/></a></td></tr>';
 			else:
 				$cons_output .= '<tr><td><img src="/rcpedia/img/'.$specie.'_off.jpg" width="250" alt="" /></td></tr>';
 			endif;

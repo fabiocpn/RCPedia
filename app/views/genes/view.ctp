@@ -17,7 +17,7 @@
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-						<?php echo $this->Html->link($gene['Specie']['name'], array('controller' => 'species', 'action' => 'view', $gene['Specie']['id'])); ?>
+						<?php echo $this->Html->link($gene['Specie']['sci_name'], array('controller' => 'species', 'action' => 'view', $gene['Specie']['id'])); ?>
 						&nbsp;
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Also known as'); ?></dt>
@@ -29,7 +29,7 @@
 					<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 						<div class="c_actions">
 							<?php echo $gene['Gene']['chr'].":".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end']); ?>
+			 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$gene['Gene']['chr']."%3A".$gene['Gene']['g_start']."-".$gene['Gene']['g_end'],array('target'=>'_blank')); ?>
 						</div>
 					</dd>
 					<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
@@ -69,7 +69,6 @@
 						<th><?php __('End'); ?></th>
 						<th><?php __('Strand'); ?></th>
 						<th><?php __('Genomic Region'); ?></th>
-						<th><?php __('Method'); ?></th>
 						<th class="actions"></th>
 					<tr>
 					<?php
@@ -87,10 +86,9 @@
 							<td><?php echo $retrogene['Retrogenes']['g_end'];?></td>
 							<td><?php echo $retrogene['Retrogenes']['strand'];?></td>
 							<td><?php echo $retrogene['Retrogenes']['g_region']; ?></td>
-							<td><?php echo $retrogene['Method']['name'];?></td>
 							<td class="actions">
 				 				<?php echo $this->Html->link(__('Details', true), array('controller' => 'retrocopies','action' => 'view', $retrogene['Retrogenes']['id'])); ?>
-				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$gene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogenes']['chr']."%3A".$retrogene['Retrogenes']['g_start']."-".$retrogene['Retrogenes']['g_end']."&hgt.customText=".$ucsc_hg_customText); ?>
+				 				<?php echo $this->Html->link('UCSC GB', "".$retrogene['Retrogenes']['ucsc_track'],array('target'=>'_blank')); ?>
 				 			</td>
 				
 						</tr>

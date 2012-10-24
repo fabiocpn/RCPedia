@@ -34,7 +34,7 @@ class GenesController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('gene', $this->Gene->read(null, $id));
-		$this->set('retrogenes', $this->Retrogenes->find('all',array ( 'order' => array('Retrogenes.ident' => 'DESC'),'joins' => array ( array ('table' => 'refseqs', 'alias' => 'Refseq', 'type' => 'inner', 'conditions' => array('Retrogenes.refseq_id = Refseq.id') ), array ( 'table' => 'genes', 'alias' => 'Gene', 'type' => 'inner', 'conditions' => array ( 'Refseq.gene_id = Gene.id') ), array ( 'table' => 'methods', 'alias' => 'Method', 'type' => 'inner', 'conditions' => array ( 'Retrogenes.method_id = Method.id' ) ) ), 'conditions' => array ('Gene.id' => $id,'Retrogenes.suppress' => 0), 'fields' => array ( 'Retrogenes.t_id', 'Retrogenes.id', 'Method.name','Retrogenes.chr','Retrogenes.g_start','Retrogenes.g_end','Retrogenes.strand','Retrogenes.sequence','Refseq.sequence','Retrogenes.g_region','Refseq.seqacc','Refseq.version','Retrogenes.sequence','Gene.chr','Gene.g_start','Gene.g_end','Gene.gene_name') ) ) );
+		$this->set('retrogenes', $this->Retrogenes->find('all',array ( 'order' => array('Retrogenes.ident' => 'DESC'),'joins' => array ( array ('table' => 'refseqs', 'alias' => 'Refseq', 'type' => 'inner', 'conditions' => array('Retrogenes.refseq_id = Refseq.id') ), array ( 'table' => 'genes', 'alias' => 'Gene', 'type' => 'inner', 'conditions' => array ( 'Refseq.gene_id = Gene.id') ), array ( 'table' => 'methods', 'alias' => 'Method', 'type' => 'inner', 'conditions' => array ( 'Retrogenes.method_id = Method.id' ) ) ), 'conditions' => array ('Gene.id' => $id,'Retrogenes.suppress' => 0), 'fields' => array ( 'Retrogenes.t_id', 'Retrogenes.id', 'Method.name','Retrogenes.chr','Retrogenes.g_start','Retrogenes.g_end','Retrogenes.strand','Retrogenes.sequence','Retrogenes.ucsc_track','Refseq.sequence','Retrogenes.g_region','Refseq.seqacc','Refseq.version','Retrogenes.sequence','Gene.chr','Gene.g_start','Gene.g_end','Gene.gene_name') ) ) );
 #		pr($this->viewVars['retrogenes']);
 
 		#$fp = fopen("/tmp/retroDB2/".$this->Session->id()."gene.fa", 'w'); 
@@ -70,13 +70,13 @@ class GenesController extends AppController {
 		#$output .= "</pre>";
 		#$this->set('alignment', $output);
 		
-		$ucsc_track_text = "track name=retrogene description=\"Retrogene position track\" color=0,61,76, %0a";
-		foreach ($this->viewVars['retrogenes'] as $retro):
-			$ucsc_track_text .= $retro['Retrogenes']['chr']."%09".$retro['Retrogenes']['g_start']."%09".$retro['Retrogenes']['g_end']."%09 Retrogene_".$retro['Retrogenes']['t_id']." %0a";
-		endforeach;
+		#$ucsc_track_text = "track name=retrogene description=\"Retrogene position track\" color=0,61,76, %0a";
+		#foreach ($this->viewVars['retrogenes'] as $retro):
+		#	$ucsc_track_text .= $retro['Retrogenes']['chr']."%09".$retro['Retrogenes']['g_start']."%09".$retro['Retrogenes']['g_end']."%09 Retrogene_".$retro['Retrogenes']['t_id']." %0a";
+		#endforeach;
 		#$ucsc_track_text .= "track name=parental description=\"Parental position track(Blue)\" color=0,61,76, %0a";
 		#$ucsc_track_text .= $retro['Gene']['chr']."%09".$retro['Gene']['g_start']."%09".$retro['Gene']['g_end']."%09 ".$retro['Gene']['gene_name']." %0a";
-		$this->set('ucsc_hg_customText', $ucsc_track_text);
+		#$this->set('ucsc_hg_customText', $ucsc_track_text);
 	}
 
 }
