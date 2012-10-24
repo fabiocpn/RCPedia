@@ -28,7 +28,7 @@
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<div class="c_actions">
 								<?php echo $retrogene['Retrogene']['chr'].":".$retrogene['Retrogene']['g_start']."-".$retrogene['Retrogene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				 				<?php echo $this->Html->link('UCSC GB', "http://genome.ucsc.edu/cgi-bin/hgTracks?".$retrogene['Specie']['ucsc_prefix']."&position=".$retrogene['Retrogene']['chr']."%3A".$retrogene['Retrogene']['g_start']."-".$retrogene['Retrogene']['g_end']."&hgt.customText=".$ucsc_hg_customText); ?>
+								<?php echo $this->Html->link('UCSC GB', "".$retrogene['Retrogene']['ucsc_track']); ?>
 							</div>
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Strand'); ?></dt>
