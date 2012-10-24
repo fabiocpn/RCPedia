@@ -33,7 +33,7 @@
                 <!--<td><?php echo $this->Html->link($retrogene['Method']['name'], $retrogene['Method']['reference']); ?>-->
                 <td class="actions">
                         <?php echo $this->Html->link(__('Details', true), array('action' => 'view', $retrogene['Retrogene']['id'])); ?>
-                        <?php echo $this->Html->link('UCSC GB', $retrogene['Retrogene']['ucsc_track']); ?>
+                        <?php echo $this->Html->link('UCSC GB', "".$retrogene['Retrogene']['ucsc_track']); ?>
                 </td>
         </tr>
 <?php endforeach; ?>
