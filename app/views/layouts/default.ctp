@@ -123,7 +123,7 @@
 				<?php echo $this->Html->link(__('Credits', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/credits');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('Publications', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/publications');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('FAQ/Help', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/help');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('Contact', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Contact', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact?c_url=Home');?> &nbsp;&nbsp;&nbsp;
 			</h1>
 		</div>
 

@@ -91,7 +91,7 @@ class RetrocopiesController extends AppController {
 					# Search_string eq ( NCBI_id or ENSEMBL_id )
 					#
 					################################
-					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
+					#$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
 					if ( count($this->viewVars['retrogenes']) == 0 ) {
 						################################
 						#
@@ -100,7 +100,7 @@ class RetrocopiesController extends AppController {
 						################################
 
 						#Is there any gene with exact gene_name match? 
-						$this->set('gene', $this->paginate('Gene', Array( 'Gene.gene_name' => $string,'Gene.specie_id' => $specie_id )));
+						$this->set('gene', $this->paginate('Gene', Array( 'Gene.specie_id' => $specie_id, 'Gene.gene_name' => $string )));
 						if ( count($this->viewVars['gene']) == 0 ) {
 							$this->set('gene_name_match', 0);
 						}
