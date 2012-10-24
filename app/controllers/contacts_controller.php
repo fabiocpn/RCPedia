@@ -6,7 +6,7 @@ class ContactsController extends AppController {
 
 	function contact() {
 
-		$email_body = "\n".$this->data['Contact']['name']."(".$this->data['Contact']['email']."): ".$this->data['Contact']['title']."\n\n".$this->data['Contact']['suggestions']."\n\n\nURL Source:".$this->data['Contact']['c_url'];
+		$email_body = "\n".$this->data['Contact']['name']."(".$this->data['Contact']['email']."): ".$this->data['Contact']['title']."\n\n".$this->data['Contact']['suggestions']."\n\n\nSource URL:".$this->data['Contact']['c_url'];
 
 		$fp = fopen("/tmp/".$this->Session->id().".mail", 'w');
         	fwrite($fp,$email_body);
