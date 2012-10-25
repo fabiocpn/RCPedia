@@ -234,7 +234,7 @@
 				            draw(data,
 				                 {title:"RNA-seq support expression",
 				                  width:600, height:400,
-				                  vAxis: {title: "Support",minValue:0}
+				                  vAxis: {title: "Support",minValue:0, viewWindow:{min:0}}
 							     
 							     }
 				            );
