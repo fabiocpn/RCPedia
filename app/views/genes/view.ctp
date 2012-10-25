@@ -131,7 +131,7 @@
 			<div class="portlet-header_t_col">Related Sequences</div>
 			<div class="portlet-content_t">
 					<?php if (!empty($retrogenes)):?>
-					<?php echo $refseq_seq ?>
+					<?php echo "<br>>".$gene['Refseq'][0]['seqacc'] ."<br><pre>". wordwrap (strtolower($gene['Refseq'][0]['sequence']),50,'<br>',true) ."</pre><br>" ?>
 					<?php
 						$i = 0;
 						foreach ($retrogenes as $retrogene):
