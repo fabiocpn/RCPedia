@@ -3,6 +3,7 @@
 	<h1>Contact</h1>
 
         <div class="contact">
+			<font size=-1>
           <?php echo $form->create("Contact",array('name' => 'Contact', 'type' => 'post','action' => 'contact'));  ?>
 		  <?php 
 					if ( !empty($_GET["c_url"]) ) {
@@ -24,7 +25,7 @@
                      $form->end();  
           ?>
         </div>
-
+			</font>
 	<br><font size=-2>
 	<tex>
 		For more extensive contacts and collaborations please mail: <?php echo $this->Html->image('email.jpg'); ?>

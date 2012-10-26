@@ -2,8 +2,10 @@
 <div class="page">
 	<h1>Publications</h1>
 	<tex>
-	  &nbsp;&nbsp;&nbsp;"Landscape of retrocopy events on primate genomes." - Manuscript in preparation.<br><br>
-	  &nbsp;&nbsp;&nbsp;"RCPedia: a database of retrocopied genes" - Submitted.<br><br>
-	  &nbsp;&nbsp;&nbsp;"Gene copy-number polymorphism caused by retrotransposition in humans" - Under review process.<br><br><br>
+	<font size=-1>
+	  <li>"RCPedia: a database of retrocopied genes" - Submitted.</li>
+	  <li>"Landscape of retrocopy events on primate genomes." - Manuscript in preparation.</li>
+	  <li>"Gene copy-number polymorphism caused by retrotransposition in humans" - Under review process.</li>
+	</font>
 	</tex>
 </div>

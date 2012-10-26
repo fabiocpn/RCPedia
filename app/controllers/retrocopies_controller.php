@@ -11,6 +11,8 @@ class RetrocopiesController extends AppController {
 		#
 		###############
 		#$this->params->named->page
+
+        $start = microtime();
 		if( !isset($this->data) && ( $this->params['url']['url'] == "retrocopies/search" || $this->params['url']['url'] == "retrocopies/search/" )  ){
 			$this->Session->delete('search_string');
 			$this->Session->delete('coord');
@@ -46,6 +48,7 @@ class RetrocopiesController extends AppController {
 			$this->Session->write('search_string',$this->data['Retrocopies']['search_string']);
 			$this->Session->write('specie_id',$this->data['Retrocopies']['specie_id']);
 		}
+        $end_coord = microtime();
 
 		###############
 		#
@@ -78,21 +81,6 @@ class RetrocopiesController extends AppController {
 			if ( ! $this->Session->read('is_coord') ) {
 				$this->paginate = array ( 'order' => 'Gene.gene_name' );
 				$this->paginate = array ( 'limit' => 50 );
-				################################
-				#
-				# Search_string eq RCP_name(t_id)
-				#
-				################################
-				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
-				if ( count($this->viewVars['retrogenes']) == 0 ) {
-
-					################################
-					#
-					# Search_string eq ( NCBI_id or ENSEMBL_id )
-					#
-					################################
-					#$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
-					if ( count($this->viewVars['retrogenes']) == 0 ) {
 						################################
 						#
 						# Search_string eq Geme_name
@@ -109,17 +97,40 @@ class RetrocopiesController extends AppController {
 						}
 						#pr($this->viewVars['retrogenes']);
 
-						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'AND' => array('Gene.gene_name' => $string)))));
+						#$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'AND' => array('Gene.gene_name' => $string)))));
+						#$this->set('retrogenes', $this->paginate('Retrogene', Array('Gene.gene_name'=>$string,'Gene.specie_id'=>$specie_id, 'Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1)));
+						$this->set('retrogenes', $this->paginate('Retrogene', Array('Gene.specie_id'=>$specie_id,'Gene.gene_name'=>$string,'Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1)));
+$end_gene_name = microtime();
 
 						if ( count($this->viewVars['retrogenes']) == 0 && $this->viewVars['gene_name_match'] == 1 ) {
 								$this->Session->setFlash(sprintf(__('There is no retrocopies for Parental Gene "%s"', true), $string));
 								#$this->redirect(array('action' => 'search'));
 						}
 						else {
+				################################
+				#
+				# Search_string eq RCP_name(t_id)
+				#
+				################################
+				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
+$end_t_id = microtime();
+				if ( count($this->viewVars['retrogenes']) == 0 ) {
+
+					################################
+					#
+					# Search_string eq ( NCBI_id or ENSEMBL_id )
+					#
+					################################
+					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
+$end_transcript = microtime();
+					if ( count($this->viewVars['retrogenes']) == 0 ) {
 							if ( count($this->viewVars['retrogenes']) == 0 ) {
 								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
+
+$end_syn = microtime();
 								if ( count($this->viewVars['retrogenes']) == 0 ) {
 									$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
+$end_official = microtime();
 									if ( count($this->viewVars['retrogenes']) == 0  ) {
 										$this->Session->setFlash(sprintf(__('There is no retrocopies for "%s"', true), $string));
 										#$this->redirect(array('action' => 'search'));
@@ -156,6 +167,16 @@ class RetrocopiesController extends AppController {
 		else {
 			$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.id' => 0)));
 		}
+
+    $parse1 = $start-$end_coord;
+    $parse2 = $start-$end_t_id;
+    $parse3 = $start-$end_transcript;
+    $parse4 = $start-$end_gene_name;
+    $parse5 = $start-$end_syn;
+    $parse6 = $start-$end_official;
+
+	#echo "Coord: $parse1<br>T_id: $parse2<br>Transcript: $parse3<br>Gene_name: $parse4<br>Sin: $parse5<br>Official: $parse6";
+
 	}
 
 	function view($id = null) {

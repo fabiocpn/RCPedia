@@ -122,7 +122,8 @@
 				<!--<?php echo $this->Html->link(__('Statistics', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/statistics');?>&nbsp;&nbsp;&nbsp;-->
 				<?php echo $this->Html->link(__('Credits', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/credits');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('Publications', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/publications');?> &nbsp;&nbsp;&nbsp;
-				<?php echo $this->Html->link(__('FAQ/Help', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/help');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('FAQ', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/faq');?> &nbsp;&nbsp;&nbsp;
+				<?php echo $this->Html->link(__('Help', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/help');?> &nbsp;&nbsp;&nbsp;
 				<?php echo $this->Html->link(__('Contact', true), 'http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact?c_url=Home');?> &nbsp;&nbsp;&nbsp;
 			</h1>
 		</div>
@@ -135,7 +136,11 @@
 				<?php echo $form->input("specie_id", array('label' => 'Specie:','div' => false,'options' => array(1=>'Human',2=>'Chimp',11=>'Gorilla',9=>'Oragutan',3=>'Rhesus',10=>'Marmoset'))); ?>
 				</div>
 				<div class="search_bottom">
-				<?php echo $form->input("search_string", array('div' => false,'label' => false,'alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'))." ".$form->button('Search',array('name' => 'Search','class'=>'button search_active','div' => false,'type' => 'submit'))." ".$form->button('Clear', array( 'name' => 'clear', 'type'=>'reset','class'=>'button reset_button','onClick' => "document.getElementById('data[Retrogenes][specie_id]').value='';"))." ".$form->end();  ?>
+				<?php echo 
+                   $form->input("search_string", array('div' => false,'label' => false,'alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'))." ".
+                   $form->button('Search',array('name' => 'Search','class'=>'button search_active','div' => false,'type' => 'submit'))." ".
+                  # $form->button('Clear', array( 'name' => 'clear', 'type'=>'reset','class'=>'button reset_button','onClick' => "document.getElementById('data[Retrogenes][specie_id]').value='';"))." ".
+                   $form->end();  ?>
 				</div>
 			</div>
 		</div>
