@@ -57,13 +57,5 @@ class Retrogene extends AppModel {
 		)
 	
 	);
-	
-#    var $last_custom_sql_count = 0;
-
-    function paginateCount($conditions = null, $recursive = 0, $extra = array()) {
-	    $count = $this->last_custom_sql_count;
-        return $count;
-     }
-
 }
 ?>

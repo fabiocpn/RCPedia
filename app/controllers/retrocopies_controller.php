@@ -12,7 +12,9 @@ class RetrocopiesController extends AppController {
 		###############
 		#$this->params->named->page
 
-        $start = microtime();
+        #    if($this->Retrogene->find('count', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0))) {
+        #        pr($xxx);
+        #    }
 		if( !isset($this->data) && ( $this->params['url']['url'] == "retrocopies/search" || $this->params['url']['url'] == "retrocopies/search/" )  ){
 			$this->Session->delete('search_string');
 			$this->Session->delete('coord');
@@ -48,7 +50,6 @@ class RetrocopiesController extends AppController {
 			$this->Session->write('search_string',$this->data['Retrocopies']['search_string']);
 			$this->Session->write('specie_id',$this->data['Retrocopies']['specie_id']);
 		}
-        $end_coord = microtime();
 
 		###############
 		#
@@ -81,64 +82,102 @@ class RetrocopiesController extends AppController {
 			if ( ! $this->Session->read('is_coord') ) {
 				$this->paginate = array ( 'order' => 'Gene.gene_name' );
 				$this->paginate = array ( 'limit' => 50 );
-						################################
-						#
-						# Search_string eq Geme_name
-						#
-						################################
 
-						#Is there any gene with exact gene_name match? 
-						$this->set('gene', $this->paginate('Gene', Array( 'Gene.specie_id' => $specie_id, 'Gene.gene_name' => $string )));
-						if ( count($this->viewVars['gene']) == 0 ) {
-							$this->set('gene_name_match', 0);
-						}
-						else {
-							$this->set('gene_name_match', 1);
-						}
-						#pr($this->viewVars['retrogenes']);
-
-						#$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1, array ( 'AND' => array('Gene.gene_name' => $string)))));
-						#$this->set('retrogenes', $this->paginate('Retrogene', Array('Gene.gene_name'=>$string,'Gene.specie_id'=>$specie_id, 'Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1)));
-						$this->set('retrogenes', $this->paginate('Retrogene', Array('Gene.specie_id'=>$specie_id,'Gene.gene_name'=>$string,'Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1)));
-$end_gene_name = microtime();
-
-						if ( count($this->viewVars['retrogenes']) == 0 && $this->viewVars['gene_name_match'] == 1 ) {
-								$this->Session->setFlash(sprintf(__('There is no retrocopies for Parental Gene "%s"', true), $string));
-								#$this->redirect(array('action' => 'search'));
-						}
-						else {
 				################################
 				#
-				# Search_string eq RCP_name(t_id)
+				# Search_string eq Geme_name
 				#
 				################################
-				$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
-$end_t_id = microtime();
-				if ( count($this->viewVars['retrogenes']) == 0 ) {
 
+				#Is there any GENE with exact gene_name match? 
+				if ( $this->Retrogene->Gene->find('count', Array('conditions' => Array( 'Gene.specie_id' => $specie_id, 'Gene.gene_name' => $string ))) == 0 ) {
+					$this->set('gene_name_match', 0);
+				}
+				else {
+					$this->set('gene_name_match', 1);
+				}
+
+				if ( $this->viewVars['gene_name_match'] != 0 ) {
+					$this->Retrogene->unbindModel(array('hasMany' => array('Expression')));
+					$this->Retrogene->unbindModel(array('hasMany' => array('Conservation')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('TGene')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Chr_accession')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Method')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Specie')));
+					#$this->Retrogene->unbindModel(array('hasMany' => array('Expression'),'hasMany' => array('Conservation'),'belongsTo' => array('TGene'),'belongsTo' => array('Chr_accession'),'belongsTo' => array('Method')));
+					$temp = $this->Retrogene->query("select count(*) as count from retrogenes as Re, refseqs as R, genes as G where Re.refseq_id = R.id and R.gene_id = G.id and G.specie_id = ".$specie_id." and G.gene_name = '".$string."';");
+					$this->Retrogene->last_custom_sql_count = $temp['0']['0']['count'];
+					#$this->Retrogene->last_custom_sql_count = $this->Retrogene->find('count', Array('conditions' => Array('Retrogene.specie_id' => $specie_id,'Gene.gene_name'=>$string,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1)));
+	
+					if ( $this->Retrogene->last_custom_sql_count == 0 ) {
+						$this->Session->setFlash(sprintf(__('There is no retrocopies for Parental Gene "%s"', true), $string));
+					}
+					else {
+						if ( $this->Retrogene->last_custom_sql_count != 0 ) {
+							#And we have a winner!
+							$this->set('retrogenes', $this->paginate('Retrogene',Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Gene.specie_id'=>$specie_id,'Gene.gene_name'=>$string,'Refseq.n_exons >' => 1)));
+						}
+					} 
+				} else {
 					################################
 					#
-					# Search_string eq ( NCBI_id or ENSEMBL_id )
+					# Search_string eq RCP_name(t_id)
 					#
 					################################
-					$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
-$end_transcript = microtime();
-					if ( count($this->viewVars['retrogenes']) == 0 ) {
-							if ( count($this->viewVars['retrogenes']) == 0 ) {
+					$this->Retrogene->unbindModel(array('hasMany' => array('Expression')));
+					$this->Retrogene->unbindModel(array('hasMany' => array('Conservation')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('TGene')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Chr_accession')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Method')));
+					$this->Retrogene->unbindModel(array('belongsTo' => array('Specie')));
+					$this->Retrogene->last_custom_sql_count = $this->Retrogene->find('count', Array('conditions' => Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
+					if ( $this->Retrogene->last_custom_sql_count != 0 ) {
+						$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id, 'Refseq.n_exons >' => 1,'Retrogene.t_id' => $string,'Retrogene.suppress' => 0)));
+					} else {
+
+						################################
+						#
+						# Search_string eq ( NCBI_id or ENSEMBL_id )
+						#
+						################################
+						
+						$this->Retrogene->unbindModel(array('hasMany' => array('Expression')));
+						$this->Retrogene->unbindModel(array('hasMany' => array('Conservation')));
+						$this->Retrogene->unbindModel(array('belongsTo' => array('TGene')));
+						$this->Retrogene->unbindModel(array('belongsTo' => array('Chr_accession')));
+						$this->Retrogene->unbindModel(array('belongsTo' => array('Method')));
+						$this->Retrogene->unbindModel(array('belongsTo' => array('Specie')));
+						$this->Retrogene->last_custom_sql_count = $this->Retrogene->find('count', Array('conditions' => Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
+						 if ( $this->Retrogene->last_custom_sql_count != 0 ) {
+							$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Retrogene.suppress' => 0,'Refseq.n_exons >' => 1,array ('OR' => array('Gene.Ensembl_id' => $string, 'Gene.ncbi_id' => $string)))));
+						} else {
+							$this->Retrogene->unbindModel(array('hasMany' => array('Expression')));
+							$this->Retrogene->unbindModel(array('hasMany' => array('Conservation')));
+							$this->Retrogene->unbindModel(array('belongsTo' => array('TGene')));
+							$this->Retrogene->unbindModel(array('belongsTo' => array('Chr_accession')));
+							$this->Retrogene->unbindModel(array('belongsTo' => array('Method')));
+							$this->Retrogene->unbindModel(array('belongsTo' => array('Specie')));
+							$this->Retrogene->last_custom_sql_count = $this->Retrogene->find('count', Array('conditions' => Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
+
+							if ( $this->Retrogene->last_custom_sql_count != 0 ) {
 								$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, array ( 'OR' => array('Gene.gene_name LIKE' => "%".$string."%",'Gene.synonims LIKE' => "%".$string."%")))));
-
-$end_syn = microtime();
-								if ( count($this->viewVars['retrogenes']) == 0 ) {
+							} else {
+								$this->Retrogene->unbindModel(array('hasMany' => array('Expression')));
+								$this->Retrogene->unbindModel(array('hasMany' => array('Conservation')));
+								$this->Retrogene->unbindModel(array('belongsTo' => array('TGene')));
+								$this->Retrogene->unbindModel(array('belongsTo' => array('Chr_accession')));
+								$this->Retrogene->unbindModel(array('belongsTo' => array('Method')));
+								$this->Retrogene->unbindModel(array('belongsTo' => array('Specie')));
+								$this->Retrogene->last_custom_sql_count = $this->Retrogene->find('count', Array('conditions' => Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
+								
+								if ( $this->Retrogene->last_custom_sql_count != 0 ) {
 									$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.specie_id' => $specie_id,'Refseq.n_exons >' => 1,'Retrogene.suppress' => 0, 'Gene.gene_oficial_name LIKE' => "%".$string."%")));
-$end_official = microtime();
-									if ( count($this->viewVars['retrogenes']) == 0  ) {
-										$this->Session->setFlash(sprintf(__('There is no retrocopies for "%s"', true), $string));
-										#$this->redirect(array('action' => 'search'));
-									}
+								} else {
+									$this->Session->setFlash(sprintf(__('There is no retrocopies for "%s"', true), $string));
 								}
 							}
 						}
-					}	
+					}
 				}
 			}
 		###############
@@ -167,15 +206,6 @@ $end_official = microtime();
 		else {
 			$this->set('retrogenes', $this->paginate('Retrogene', Array('Retrogene.id' => 0)));
 		}
-
-    $parse1 = $start-$end_coord;
-    $parse2 = $start-$end_t_id;
-    $parse3 = $start-$end_transcript;
-    $parse4 = $start-$end_gene_name;
-    $parse5 = $start-$end_syn;
-    $parse6 = $start-$end_official;
-
-	#echo "Coord: $parse1<br>T_id: $parse2<br>Transcript: $parse3<br>Gene_name: $parse4<br>Sin: $parse5<br>Official: $parse6";
 
 	}
 
