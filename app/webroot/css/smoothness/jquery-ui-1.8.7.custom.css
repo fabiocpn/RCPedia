@@ -589,22 +589,22 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 
 
 /** PORTLETS **/
-.column { width: 200px; float: left; padding-bottom: 0.1px; padding-top: 20px; }
-.portlet { margin: 0 .1em .1em 0; }
-.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 90%; font-color: #9b5c3b;}
+.column { width: 200px; float: left; padding-bottom: 0.1px; margin-top: 20px; background: #ffffff; background-color: #ffffff}
+.portlet { margin: 0 .1em .1em 0; background: #ffffff; background-color: #ffffff}
+.portlet-header { margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 90%; font-color: #9b5c3b; background: #ffffff; background-color: #ffffff}
 .portlet-header .ui-icon { float: right; }
-.portlet-content { width: 850px; padding: 0.4em; font-size: 80%;}
+.portlet-content { width: 850px; padding: 0.4em; font-size: 80%; background: #ffffff; background-color: #ffffff}
 .ui-sortable-placeholder { border: 0px none; visibility: hidden !important; height: 50px !important; }
 .ui-sortable-placeholder * { visibility: hidden; }
 
-.column_t { padding-bottom: 0.1px; padding-top: 20px; }
-.portlet_t { margin: 0 .1em .1em 0; }
-.portlet_t_col { margin: 0 .1em .1em 0; }
+.column_t { float: left; padding-bottom: 0.1px; margin-top: 20px; background: #ffffff; background-color: #ffffff}
+.portlet_t { margin: 0 .1em .1em 0; background: #ffffff; background-color: #ffffff }
+.portlet_t_col { margin: 0 .1em .1em 0; background: #ffffff; background-color: #ffffff}
 .portlet-header_t { background: #acacac; margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 110%;}
 .portlet-header_t_col { background: #acacac; margin: 0.2em; padding-bottom: 4px; padding-left: 0.2em; font-size: 110%;}
 .portlet-header_t .ui-icon { float: right; }
 .portlet-header_t_col .ui-icon { float: right; }
-.portlet-content_t { width: 850px; padding: 0.4em; font-size: 80%;}
+.portlet-content_t { width: 850px; padding: 0.4em; font-size: 80%; background: #ffffff; background-color: #ffffff}
 .ui-sortable-placeholder_t { border: 0px none; visibility: hidden !important; height: 50px !important; }
 .ui-sortable-placeholder_t * { visibility: hidden; }
 

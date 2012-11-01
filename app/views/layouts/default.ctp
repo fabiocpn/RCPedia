@@ -129,28 +129,20 @@
 		</div>
 
 		<div id="search">
-			<!--<?php echo $this->Html->image("../img/logo.png",Array("class" => "floatleft")); ?>--!>
 			<div class="search_b">
 				<?php echo $form->create("Retrocopies",array('name' => 'Retrocopies', 'type' => 'post','action' => 'search'));	?>
-				<div class="search_top">
 				<?php echo $form->input("specie_id", array('label' => 'Specie:','div' => false,'options' => array(1=>'Human',2=>'Chimp',11=>'Gorilla',9=>'Oragutan',3=>'Rhesus',10=>'Marmoset'))); ?>
-				</div>
-				<div class="search_bottom">
 				<?php echo 
                    $form->input("search_string", array('div' => false,'label' => false,'alt'=>'Possible searches:Retrogene Name, Parental Gene, ESEMBL Id, UCSC Id, chromosome position (chr18:6462091-9679493; chr18)'))." ".
                    $form->button('Search',array('name' => 'Search','class'=>'button search_active','div' => false,'type' => 'submit'))." ".
-                  # $form->button('Clear', array( 'name' => 'clear', 'type'=>'reset','class'=>'button reset_button','onClick' => "document.getElementById('data[Retrogenes][specie_id]').value='';"))." ".
                    $form->end();  ?>
-				</div>
 			</div>
 		</div>
 
-		<div id="content">
-			<?php echo $this->Session->flash(); ?>
+		<div id="content"> 
+    		<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
-		</div>
-
-	</div>
+		</div> 
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

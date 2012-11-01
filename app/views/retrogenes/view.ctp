@@ -266,7 +266,6 @@
 				<div class="portlet-content_t">
 					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
 					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>
-					<?php #echo ">RefSeq_CDS<br><pre>". wordwrap (strtolower($retrogene['Refseq']['cds_seq']),50,'<br>',true). "</pre><br>"; ?>
 				</div>
 			</div>
 		</div>
@@ -305,13 +304,8 @@
 				<div class="portlet-content">
 						<?php echo $this->Html->image('ContactStuff.png',array('width'=>20))."&nbsp;&nbsp;"; echo $this->Html->link("Feedback", "http://www.bioinfo.mochsl.org.br/rcpedia/pages/contact?c_url=".$_SERVER["REQUEST_URI"]); ?>&nbsp;<br>
 				</div>
-			<div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div style="padding:10px;">
-<div id="sv1" class="SeqViewerApp" >
-<a href="?embedded=true&id=NC_003284&from=13598210&to=13599776"> </a>
-</div>
-</div>
