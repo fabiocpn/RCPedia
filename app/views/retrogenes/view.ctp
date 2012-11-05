@@ -21,7 +21,7 @@
 
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specie'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Specie']['sci_name']; ?>
+							<?php echo $this->Html->link($retrogene['Specie']['sci_name'], array('controller' => 'species', 'action' => 'view', $retrogene['Specie']['id'])); ?>
 							&nbsp;
 						</dd>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
@@ -36,14 +36,24 @@
 							<?php echo $retrogene['Retrogene']['strand']; ?>
 							&nbsp;
 						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('RefSeq Overlap'); ?></dt>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Parental sequence'); ?></dt>
+						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+							<?php echo $retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']; ?>
+							&nbsp;
+						</dd>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Parental seq. overlap'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo $retrogene['Retrogene']['abs_overlap']." (".sprintf("%01.2f",$retrogene['Retrogene']['per_overlap']*100)."%)"; ?>
 							&nbsp;
 						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Identity'); ?></dt>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Parental seq. identity'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<?php echo sprintf("%01.2f",$retrogene['Retrogene']['ident']*100)."%"; ?>
+							&nbsp;
+						</dd>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Insertion point'); ?></dt>
+						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+							<?php echo $retrogene['Retrogene']['g_region']; ?>
 							&nbsp;
 						</dd>
 						<?php if ( strcmp($retrogene['Retrogene']['direct_repeat'] ,"") == 0 ) echo "<!--";?>
@@ -73,21 +83,6 @@
 							&nbsp;
 						</dd>
 						<?php if ( strcmp($retrogene['Retrogene']['direct_repeat'] ,"") == 0 ) echo "-->";?>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Genomic Region'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Retrogene']['g_region']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('RefSeq'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']; ?>
-							&nbsp;
-						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Method'); ?></dt>
-						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Method']['name']; ?>
-							&nbsp;
-						</dd>
 					</dl>
 				</div>
 			</div>
@@ -144,7 +139,7 @@
 			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "<!--";?>
 			<div class="portlet_t">
 				<a id="parental"></a>
-				<div class="portlet-header_t">Target Gene - <?php echo $retrogene['Retrogene']['g_region']?></div>
+				<div class="portlet-header_t">Host Gene - <?php echo $retrogene['Retrogene']['g_region']?></div>
 				<div class="portlet-content_t">
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
 						<dt <?php if ($i % 2 == 0) echo $class;?>>Gene Name</dt>
@@ -214,7 +209,7 @@
 						<?php 
 							$tissues = "";
 							$exp_values = "";
-							$one_color = "['Tissue','Support'],";
+							$one_color = "['Tissue','Number of reads'],";
 							foreach ( $retrogene['Expression'] as $tissue ):
 								$one_color .= "['".$tissue['tissue']."',".$tissue['support']."],";
 								$tissues .= "'".$tissue['tissue']."',";
@@ -232,7 +227,7 @@
 				        // Create and draw the visualization.
 				        new google.visualization.ColumnChart(document.getElementById('visualization')).
 				            draw(data,
-				                 {title:"RNA-seq support expression",
+				                 {title:"Retrocopy expression (RNA-seq data)",
 				                  width:600, height:400,
 				                  vAxis: {title: "Support",minValue:0, viewWindow:{min:0}}
 							     
@@ -249,9 +244,9 @@
 			</div>
 		<?php if ( $retrogene['Retrogene']['specie_id'] == 10 ) echo "-->";?>
 
-			<div class="portlet_t_col">
+			<div class="portlet_t">
 				<a id="alignment"></a>
-				<div class="portlet-header_t_col">Alignment - Retrocopy x Parental Gene</div>
+				<div class="portlet-header_t">Alignment - Retrocopy x Parental Gene</div>
 				<div class="portlet-content_t">
 					<font size=-2>
 					<pre>
@@ -260,9 +255,9 @@
 					</font>		
 				</div>
 			</div>
-			<div class="portlet_t_col">
+			<div class="portlet_t">
 				<a id="sequences"></a>
-				<div class="portlet-header_t_col">Related Sequences</div>
+				<div class="portlet-header_t">Related Sequences</div>
 				<div class="portlet-content_t">
 					<?php echo ">".$retrogene['Retrogene']['t_id']."<br><pre>". wordwrap (strtolower($retrogene['Retrogene']['sequence']),50,'<br>',true) . "</pre><br>"; ?>
 					<?php echo ">".$retrogene['Refseq']['seqacc'].".".$retrogene['Refseq']['version']."<br><pre>". wordwrap (strtolower($retrogene['Refseq']['sequence']),50,'<br>',true). "</pre><br>"; ?>

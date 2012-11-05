@@ -98,8 +98,8 @@
 			</div>
 		</div>
 		<a id="refseqs"></a>
-		<div class="portlet_t_col">
-			<div class="portlet-header_t_col">NCBI Reference Sequence(s) (mRNAs)</div>
+		<div class="portlet_t">
+			<div class="portlet-header_t">NCBI Reference Sequence(s) (mRNAs)</div>
 			<div class="portlet-content_t">
 				<?php if (!empty($gene['Refseq'])):?>
 				<table cellpadding = "0" cellspacing = "0">
@@ -127,8 +127,8 @@
 			</div>
 		</div>
 		<a id="related_sequences"></a>
-		<div class="portlet_t_col">
-			<div class="portlet-header_t_col">Related Sequences</div>
+		<div class="portlet_t">
+			<div class="portlet-header_tl">Related Sequences</div>
 			<div class="portlet-content_t">
 					<?php if (!empty($retrogenes)):?>
 					<?php echo "<br>>".$gene['Refseq'][0]['seqacc'] ."<br><pre>". wordwrap (strtolower($gene['Refseq'][0]['sequence']),50,'<br>',true) ."</pre><br>" ?>
