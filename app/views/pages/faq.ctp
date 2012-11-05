@@ -22,10 +22,10 @@ Since retrocopies, <i>ab initio</i>, share high sequence similarity with their p
 		</tex><br><br>
 
 
-		<li><b>Where is the expression data comming from?</b></li>
+		<li><b>Where is the expression data coming from?</b></li>
 		<tex>
  <div align="justify">
-We are very thankfull to projects that make available their RNA-seq data publicly avaible, mainly transcriptome data from Chimp, Gorilla, Orangutang and Rhesus. Namely, we use publicy available data from:
+We are very thankful to projects that make available their RNA-seq data publicly available, mainly transcriptome data from Chimp, Gorilla, Orangutan and Rhesus. Namely, we use publicly available data from:
 <br><br><font size=-1>
 - The evolution of gene expression levels in mammalian organs. (2011). The evolution of gene expression levels in mammalian organs., 478(7369), 343–348. doi:10.1038/nature10532
 <br>
@@ -39,9 +39,9 @@ We are very thankfull to projects that make available their RNA-seq data publicl
 		<li><b>I've found a BUG on XX! or This retrocopy YY is not a retrocopy! Or yet, This retrocopy ZZ is missing</b></li>
 		<tex>
  <div align="justify">
-We would be really greatfull it you let us know how we can ehance the database quality. For that, we make available the Feedback link.<br><br>
+We would be really greatful if you let us know how we can enhance the database quality. For that, we make available the Feedback link.<br><br>
 <center><?php echo $this->Html->image('help/html_feedback.jpeg',array('width'=>600)) ?></center><br><br>
-This link is available on all RCPedia pages and redirects you to a contact form which already have the URL you are comming from. Give us some details and, if necessary, we will reply you back as soon as possible. 
+This link is available on all RCPedia pages and redirects you to a contact form which already have the URL you are coming from. Give us some details and, if necessary, we will reply you back as soon as possible. 
  </div>
 		</tex><br><br>
 
@@ -55,7 +55,7 @@ About that... We still don't have a paper of RCPedia, but this shall change very
 		<li><b>Can I help anyway?</b></li>
 		<tex>
  <div align="justify">
-Yes you can! Please give us feedback and suggestions about the database and the front-end. Since RCPedia gather a lot of data we need your help to keep the database curetated. Let us know your opinion by the 
+Yes you can! Please give us feedback and suggestions about the database and the front-end. Since RCPedia gather a lot of data we need your help to keep the database curated. Let us know your opinion by the 
 </div>
 		</tex><br><br>
 
