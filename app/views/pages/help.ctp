@@ -4,7 +4,7 @@
 <tex>
 <center><?php echo $this->Html->image('help/search_box.png',array('width'=>600)) ?></center><br><br>
  <div align="justify">
-RCPedia usage orbitates its querying system, therefore, the only way of getting the right answers is by doing the right questions. We make available four ways of querying for retrocopies events:<br><br>
+RCPedia usage orbitates its querying system, therefore, the only way of getting the right answers is by asking the right questions. We make available four ways of querying for retrocopy events:<br><br>
 - Coordinates (chr18 or chr18 23747811 23751321 or chr18:23747811-23751321);<br>
 - Parental gene (DHFR,RPL21,GAPDH);<br>
 - Target gene (TF,ERBB2);<br>
@@ -35,38 +35,38 @@ Parental perspective is one of the many ways to investigate retrocopies. In this
 <center><?php echo $this->Html->image('help/parental_summary.png',array('width'=>600)) ?></center>
 Summary block compiles information, such as, Full Name, Genomic coordinate, Strand and Summary about its function.<br><br>
 <center><?php echo $this->Html->image('help/parental_movements.png',array('width'=>600)) ?></center>
-A graphical representation representing the movements of the duplications is also available. Outermost blocks represents the organism chromosomes, lines on the center represents the movements of the sequence. On DHFR for example there are six duplications and they are shown by links leaving the coordinate on chromosome 5 and arriving on the insertion point where the retrocopy is now located.<br><br>
+A graphical representation representing the movements of the duplications is also available. Outermost blocks represent the organism chromosomes, lines on the center represents the movements of the sequence. On DHFR for example there are six duplications and they are shown by links leaving the coordinate on chromosome 5 and arriving on the insertion point where the retrocopy is now located.<br><br>
 
 <center><?php echo $this->Html->image('help/parental_rcps.png',array('width'=>600)) ?></center>
 Very similar to the search results we also provide a compilation of all retrocopies from a given parental gene.<br><br>
 
 <center><?php echo $this->Html->image('help/parental_transcripts.png',array('width'=>600)) ?></center>
-The "NCBI Reference Sequence" show all transcripts used on our analysis.<br><br>
+The "NCBI Reference Sequence" shows all transcripts used in our analysis.<br><br>
 
 <center><?php echo $this->Html->image('help/parental_malignment.png',array('width'=>600)) ?></center>
-And finally a landscape of the retrocopy sequence is also provided by the multiple alignment of all retrocopies against the transcript of the parental gene. This overview enables the user to detect, for example, old and recent retrocopies by its similarity with the parental sequence.<br><br><br>
+And finally a landscape of the retrocopy sequence is also provided by the multiple alignment of all retrocopies against the transcript of the parental gene. This overview enables the user to detect, for example, old and recent retrocopies by its similarity to the parental sequence.<br><br><br>
 </div>
 </tex>
 <h1>Retrocopy perspective</h1>
 <tex>
  <div align="justify">
-Retrocopy perspective is the main source of information of a specific genomic locus annotated as retrocopy. Here we are describing all available information of a recently described retrocopy with putative function. DHFRL1.<br><br>
+Retrocopy perspective is the main source of information for a specific genomic locus annotated as retrocopy. Here we present all available information of a recently described retrocopy with putative function: DHFRL1.<br><br>
 
 <center><?php echo $this->Html->image('help/rcp_summary.png',array('width'=>600)) ?></center>
-Summary block is the compilation of the information of a genomic locus annotated as retrocopy by RCPedia. Here we make available the genomic coordinate, identity of the retrocopy sequence compared to the parental sequence, the percentage of the parental sequence that was duplicated, putative direct repeats flanking the insertion, genomic context and finally, the putative parental transcript that was used as template during the reverse transcription process.<br><br>
+Summary block is a compilation of the information for a genomic locus annotated as retrocopy by RCPedia. Here we make available the genomic coordinate, identity of the retrocopy sequence compared to the parental sequence, the percentage of the parental sequence that was duplicated, putative direct repeats flanking the insertion, genomic context and finally, the putative parental transcript that was used as template during the reverse transcription process.<br><br>
 
 <center><?php echo $this->Html->image('help/rcp_context.png',array('width'=>600)) ?></center>
-Genomic context is really important for retrocopies since the event may take advantage or neighbor promoters to get expressed. Here we make available a browsable window where one may see the genes nearby the retrocopy locus.<br><br>
+Genomic context is really important for retrocopies since the event may take advantage of neighbor promoters to get expressed. Here we make available a browsable window where one may see the genes nearby the retrocopy locus.<br><br>
 <center><?php echo $this->Html->image('help/rcp_parental.png',array('width'=>600)) ?></center>
 Parental block compiles information about the gene that was duplicated by the retrotransposition event.<br><br>
 <center><?php echo $this->Html->image('help/rcp_conservation.png',array('width'=>600)) ?></center>
-Interspecie conservation block shows if the event have an orthologous sequence on other organism. All orthologous events are clickable and forward the user to the retrocopy event on the respective organism.<br><br>
+Interspecies conservation block shows if the event has an orthologous sequence on other organisms. All orthologous events are clickable and forward the user to the retrocopy event on the respective organism.<br><br>
 <center><?php echo $this->Html->image('help/rcp_expression.png',array('width'=>600)) ?></center>
-Based on publicly available data of RNA-seq, we were able to detect the expression of retrocopies on Human, Chimp, Gorilla, Orangutan and Rhesus on six tissues: Brain, Cerebellum, Heart, Kidney, Liver and Testis. This block shows a representation of the expression level of the genomic locus annotated as retrocopy by the number of reads supporting the expression of the region.<br><br>
+Based on publicly available RNA-seq data, we were able to detect the expression of retrocopies in Human, Chimp, Gorilla, Orangutan and Rhesus in six tissues: Brain, Cerebellum, Heart, Kidney, Liver and Testis. This block shows a representation of the expression level of the genomic locus annotated as retrocopy by the number of reads supporting the expression of the genomic region.<br><br>
 <center><?php echo $this->Html->image('help/rcp_malignment.png',array('width'=>600)) ?></center>
 Alignment Retrocopy x Parental gene shows the similarity of the sequences of the retrocopy and the putative transcript used as template during the reverse transcription.<br><br>
 <center><?php echo $this->Html->image('help/rcp_relseq.png',array('width'=>600)) ?></center>
-Finally, we also make available sequences cited above if the user want to investigate further the retrocopy and parental sequence.<br><br>
+Finally, we also make available the sequences cited above if the user wants to investigate further the retrocopy and parental sequence.<br><br>
 </div>
 </tex>
 </div>

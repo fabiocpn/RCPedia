@@ -7,7 +7,7 @@
 					<dl><?php $i = 0; $class = ' class="altrow"';?>
 						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Retrocopy Name'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-							<?php echo $retrogene['Retrogene']['t_id']; ?>
+							<?php echo "RC".$retrogene['Retrogene']['t_id']; ?>
 							&nbsp;
 						</dd>
 							
@@ -24,7 +24,7 @@
 							<?php echo $this->Html->link($retrogene['Specie']['sci_name'], array('controller' => 'species', 'action' => 'view', $retrogene['Specie']['id'])); ?>
 							&nbsp;
 						</dd>
-						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinate'); ?></dt>
+						<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Coordinates'); ?></dt>
 						<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 							<div class="c_actions">
 								<?php echo $retrogene['Retrogene']['chr'].":".$retrogene['Retrogene']['g_start']."-".$retrogene['Retrogene']['g_end']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -136,7 +136,7 @@
 			</div>
 
 
-			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "<!--";?>
+			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"Intergenic") == 0 ) echo "<!--";?>
 			<div class="portlet_t">
 				<a id="parental"></a>
 				<div class="portlet-header_t">Host Gene - <?php echo $retrogene['Retrogene']['g_region']?></div>
@@ -170,7 +170,7 @@
 					</dl>
 				</div>
 			</div>
-			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"intergenic") == 0 ) echo "-->";?>
+			<?php if ( strcmp($retrogene['Retrogene']['g_region'] ,"Intergenic") == 0 ) echo "-->";?>
 
 			<div class="portlet_t">
 				<a id="conservation"></a>
@@ -229,7 +229,7 @@
 				            draw(data,
 				                 {title:"Retrocopy expression (RNA-seq data)",
 				                  width:600, height:400,
-				                  vAxis: {title: "Support",minValue:0, viewWindow:{min:0}}
+				                  vAxis: {title: "Number of reads",minValue:0, viewWindow:{min:0}}
 							     
 							     }
 				            );

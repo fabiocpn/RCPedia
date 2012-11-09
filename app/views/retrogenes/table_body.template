@@ -21,7 +21,7 @@
                 }
         ?>
         <tr<?php echo $class;?>>
-                <td><?php echo $retrogene['Retrogene']['t_id']; ?>&nbsp;</td>
+                <td><?php echo "RC".$retrogene['Retrogene']['t_id']; ?>&nbsp;</td>
                 <td><?php echo $retrogene['Retrogene']['chr']; ?>&nbsp;</td>
                 <td><?php echo $retrogene['Retrogene']['g_start']; ?>&nbsp;</td>
                 <td><?php echo $retrogene['Retrogene']['g_end']; ?>&nbsp;</td>
