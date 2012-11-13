@@ -28,7 +28,7 @@ class RetrocopiesController extends AppController {
 		#
 		###############
 		if(isset($this->data['Retrocopies']['search_string'])) {
-			if ( preg_match("/^chr[0-9]/",$this->data['Retrocopies']['search_string']) || preg_match("/^CHR[0-9]/",$this->data['Retrocopies']['search_string']) ) {
+			if ( preg_match("/^chr[0-9XY]/",$this->data['Retrocopies']['search_string']) || preg_match("/^CHR[0-9XY]/",$this->data['Retrocopies']['search_string']) ) {
 				$array = preg_split("/[:|-\s]+/", $this->data['Retrocopies']['search_string']);
 				if ( isset($array[0]) ) { 
 					$t_coord['chr']   = preg_replace("/,/","",$array[0]); 
