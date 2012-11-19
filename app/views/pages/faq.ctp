@@ -22,7 +22,7 @@ Since retrocopies, <i>ab initio</i>, share high sequence similarity with their p
 		</tex><br><br>
 
 
-		<li><b>Where is the expression data coming from?</b></li>
+		<li><b>Where are the expression data coming from?</b></li>
 		<tex>
  <div align="justify">
 We are very thankful to projects that make their RNA-seq data publicly available, mainly transcriptome data from Chimp, Gorilla, Orangutan and Rhesus. Namely, we use publicly available data from:
@@ -55,7 +55,7 @@ About that... We still don't have a paper for RCPedia, but this should change ve
 		<li><b>Can I help anyway?</b></li>
 		<tex>
  <div align="justify">
-Yes you can! Please give us feedback and suggestions about the database and the front-end. Since RCPedia gathers a lot of data we need your help to keep the database curated. Let us know your opinion through the contact form.
+Yes you can! Please give us feedback and suggestions about the database and the front-end. Since RCPedia gathers a lot of data we need your help to keep the database accurate. Let us know your opinion through the contact form.
 </div>
 		</tex><br><br>
 

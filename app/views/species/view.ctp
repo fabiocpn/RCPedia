@@ -103,7 +103,7 @@
 	<center>
 	<?php if ( !empty($tissues) )  echo '
 	<font size=-2><b>
-	Retrocopies tissue expression</b></font></center><br>
+	Retrocopy expressios</b></font></center><br>
 	<div id="visualization_tissue" style="width: 500px; height: 400px;"></div>
 	' ?>
 	</td></tr>
